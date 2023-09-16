@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+        <form id="grades">
+            
+        <!-- First column -->
+        <td valign="top">
+            <ul>
+                <li><a href="profile/index.html">Account</a></li>
+                <li><a href=#>Dashboard</a></li>
+                <li><a href="courses/index.html">Courses</a></li>
+                <li><a href=#>Calendar</a></li>
+                <li><a href=#>Inbox</a></li>
+                <li><a href=#>History</a></li>
+                <li><a href=#>Studio</a></li>
+                <li><a href=#>Commons</a></li>
+                <li><a href=#>Help</a></li>
+            </ul>
+        </td>
+        <!-- Second column -->
+        <td valign="top">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href=#>Modules</a></li>
+                <li><a href=#>Piazza</a></li>
+                <li><a href=#>Zoom Meetings</a></li>
+                <li><a href="assignments/index.html">Assignments</a></li>
+                <li><a href=#>Quizzes</a></li>
+                <li><a href="grades.html">Grades</a></li>
+                <li><a href=#>People</a></li>
+                <li><a href=#>Panopto Video</a></li>
+                <li><a href=#>Discussions</a></li>
+                <li><a href=#>Announcements</a></li>
+                <li><a href=#>Pages</a></li>
+                <li><a href=#>Files</a></li>
+                <li><a href=#>Rubrics</a></li>
+                <li><a href=#>Outcomes</a></li>
+                <li><a href=#>Collaborations</a></li>
+                <li><a href=#>Syllabus</a></li>
+                <li><a href=#>Settings</a></li>
+            </ul>
+        </td>
+
+        <!-- Third column is for the grades-->
+        <td valign="top">
+            <!-- buttons on top -->
+            <select id="gradebook">
+                <option value="gradebook">Gradebook</option>
+            </select>
+            <button type="button">Import</button>
+            <select id="export">
+                <option value="export">Export</option>
+            </select>
+            <button type="button">Configure</button>
+
+            <!-- search -->
+            <h2>Student Names</h2>
+            <input id="text-fields-students" placeholder="Search Students"/>
+            <h2>Assignment Names</h2>
+            <input id="text-fields-assignments" placeholder="Search Assignments"/><br/><br/>
+            <button type="button">Apply Filters</button>
+            <br/>
+            <br/>
+
+            <!-- grades table-->
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>A1 SETUP<br/>Out of 100</th>
+                        <th>A2 HTML<br/>Out of 100</th>
+                        <th>A3 CSS<br/>Out of 100</th>
+                        <th>A4 BOOTSTRAP<br/>Out of 100</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alice Wonderland</td>
+                        <td style="text-align: center">98</td>
+                        <td style="text-align: center">89</td>
+                        <td style="text-align: center">87</td>
+                        <td style="text-align: center">90</td>
+                    </tr>
+
+                    <tr>
+                        <td>Princess Leia</td>
+                        <td style="text-align: center">98</td>
+                        <td style="text-align: center">80</td>
+                        <td style="text-align: center">87</td>
+                        <td style="text-align: center">86</td>
+                    </tr>
+
+                    <tr>
+                        <td>Luke SkyWalker</td>
+                        <td >
+                            <input type="text" value="99" style="text-align: center">
+                        </td>
+                        <td style="text-align: center">88</td>
+                        <td style="text-align: center">97</td>
+                        <td style="text-align: center">82</td>
+                    </tr>
+
+                    <tr>
+                        <td>Han Solo</td>
+                        <td style="text-align: center">83</td>
+                        <td style="text-align: center">99</td>
+                        <td style="text-align: center">94</td>
+                        <td>
+                            <input type="text" value="98" style="text-align: center">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        </form>
+        <!-- end page -->
+        </tr>
+    </table>
+
+</body>
+</html>
