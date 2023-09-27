@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/vendors/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/kanbas/kanbasnavigation/index.css">
+    <link rel="stylesheet" href="/kanbas/courses/index.css">
    <meta charset="UTF-8">
    <title>Title</title>
 </head>
 <body>
-    <table>
-        <tr>
-        <form id="course-details">
-        <!-- First column -->
-        <td valign="top">
-            <ul>
-                <li><a href="../profile/index.html">Account</a></li>
-                <li><a href=#>Dashboard</a></li>
-                <li><a href="index.html">Courses</a></li>
-                <li><a href=#>Calendar</a></li>
-                <li><a href=#>Inbox</a></li>
-                <li><a href=#>History</a></li>
-                <li><a href=#>Studio</a></li>
-                <li><a href=#>Commons</a></li>
-                <li><a href=#>Help</a></li>
+     <!-- First column -->
+     <div class="wd-flex-row-container">
+        <div class="wd-bg-color-black">
+            <ul class="wd-kanbas-navigation">
+                <li><a href="/kanbas/profile/index.html">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <br/>
+                    Account</a></li>
+                <li><a href="/kanbas/dashboard/index.html">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i>
+                    Dashboard</a></li>
+                <li class="wd-active"><a href="/kanbas/courses/index.html">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <br/>
+                    Courses</a></li>
+                <li><a href=#>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <br/>
+                    Calendar</a></li>
+                <li><a href=#>
+                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <br/>
+                    Inbox</a></li>
+                <li><a href=#>
+                    <i class="fa fa-history" aria-hidden="true"></i>
+                    <br/>
+                    History</a></li>
+                <li><a href=#>
+                    <i class="fa fa-desktop" aria-hidden="true"></i>
+                    <br/>
+                    Studio</a></li>
+                <li><a href=#>
+                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                    <br/>
+                    Commons</a></li>
+                <li><a href=#>
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                    <br/>
+                    Help</a></li>
             </ul>
-        </td>
+            </div>
         <!-- Second column -->
-        <td valign="top">
-            <ul>
-                <li><a href="../home.html">Home</a></li>
+        <div>
+            <ul class="wd-course-navigation">
+                <li><a href="/kanbas/courses/index.html">Home</a></li>
                 <li><a href=#>Modules</a></li>
                 <li><a href=#>Piazza</a></li>
                 <li><a href=#>Zoom Meetings</a></li>
-                <li><a href="../assignments/index.html">Assignments</a></li>
+                <li><a href="/kanbas/assignments/index.html">Assignments</a></li>
                 <li><a href=#>Quizzes</a></li>
-                <li><a href="../grades.html">Grades</a></li>
+                <li><a href="/kanbas/grades.html">Grades</a></li>
                 <li><a href=#>People</a></li>
                 <li><a href=#>Panopto Video</a></li>
                 <li><a href=#>Discussions</a></li>
@@ -42,15 +70,14 @@
                 <li><a href=#>Outcomes</a></li>
                 <li><a href=#>Collaborations</a></li>
                 <li><a href=#>Syllabus</a></li>
-                <li><a href="coursedetails.html">Settings</a></li>
+                <li class="wd-active"><a href="/kanbas/courses/coursedetails.html">Settings</a></li>
             </ul>
-        </td>
-
-        <td valign="top">
-            <!-- Top selections -->
-            <a href="coursedetails.html">Course Details</a>
+        </div>
+        <!-- Third column -->
+        <div class="wd-flex-grow-1">
+            <a href="/kanbas/courses/coursedetails.html">Course Details</a>
             <a href="#">Sections</a>
-            <a href="coursenavigation.html">Navigation</a>
+            <a href="/kanbas/courses/coursenavigation.html">Navigation</a>
             <a href="#">Apps</a>
             <a href="#">Feature Options</a>
             <a href="#">Integration</a>
@@ -272,11 +299,8 @@
                 </form>
             </table>
             <br/>
-        </td>
 
-        <!-- end page -->
-        </tr>
-    </table>
-
+        </div>
+    </div>
 </body>
 </html>

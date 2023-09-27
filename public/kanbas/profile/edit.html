@@ -1,32 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/vendors/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/kanbas/kanbasnavigation/index.css">
+    <link rel="stylesheet" href="/kanbas/courses/index.css">
    <meta charset="UTF-8">
    <title>Title</title>
 </head>
 <body>
-    <table>
-        <tr>
-        <form id="profile-edit">
-        <!-- First column -->
-        <td valign="top">
-            <ul>
-                <li><a href="index.html">Account</a></li>
-                <li><a href=#>Dashboard</a></li>
-                <li><a href="../courses/index.html">Courses</a></li>
-                <li><a href=#>Calendar</a></li>
-                <li><a href=#>Inbox</a></li>
-                <li><a href=#>History</a></li>
-                <li><a href=#>Studio</a></li>
-                <li><a href=#>Commons</a></li>
-                <li><a href=#>Help</a></li>
+    <div class="wd-flex-row-container">
+        <div class="wd-bg-color-black">
+            <ul class="wd-kanbas-navigation">
+                <li class="wd-active"><a href="/kanbas/profile/index.html">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <br/>
+                    Account</a></li>
+                <li><a href="/kanbas/dashboard/index.html">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i>
+                    Dashboard</a></li>
+                <li><a href="/kanbas/courses/index.html">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <br/>
+                    Courses</a></li>
+                <li><a href=#>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <br/>
+                    Calendar</a></li>
+                <li><a href=#>
+                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <br/>
+                    Inbox</a></li>
+                <li><a href=#>
+                    <i class="fa fa-history" aria-hidden="true"></i>
+                    <br/>
+                    History</a></li>
+                <li><a href=#>
+                    <i class="fa fa-desktop" aria-hidden="true"></i>
+                    <br/>
+                    Studio</a></li>
+                <li><a href=#>
+                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                    <br/>
+                    Commons</a></li>
+                <li><a href=#>
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                    <br/>
+                    Help</a></li>
             </ul>
-        </td>
+            </div>
         <!-- Second column -->
-        <td valign="top">
-            <ul>
+        <div>
+            <ul class="wd-course-navigation">
                 <li><a href="#">Notifications</a></li>
-                <li><a href="index.html">Profile</a></li>
+                <li class="wd-active"><a href="index.html">Profile</a></li>
                 <li><a href="#">Files</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">ePortfolios</a></li>
@@ -35,10 +62,10 @@
                 <li><a href="#">Qwickly Course Tools</a></li>
                 <li><a href="#">Global Announcements</a></li>
             </ul>
-        </td>
-        <!-- Third column for the profile -->
-        <td valign="top">
-            
+        </div>
+        <!-- Third column -->
+        <div class="wd-flex-grow-1">
+          
             <br/>
             <h2>Jose Annunziato
                
@@ -86,17 +113,13 @@
             <br/>
 
             <button type="button">Add another link</button><br/>
-            <a href="index.html"><button type="button">Cancel</button></a>
-            <a href="index.html"><button type="button">Save Profile</button></a><br/>
+            <a href="/kanbas/profile/index.html"><button type="button">Cancel</button></a>
+            <a href="/kanbas/profile/index.html"><button type="button">Save Profile</button></a><br/>
             <button type="button">Edit Profile</button>
             <button type="button">Cancel Editting</button><br/>
-
-
-        </td>
         </form>
-        <!-- end page -->
-        </tr>
-    </table>
+        </div>
+        
 
 </body>
 </html>
