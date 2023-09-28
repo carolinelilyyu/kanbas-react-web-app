@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="/vendors/fontawesome/css/font-awesome.css">
     <link rel="stylesheet" href="/kanbas/kanbasnavigation/index.css">
     <link rel="stylesheet" href="/kanbas/courses/index.css">
+    <link rel="stylesheet" href="/kanbas/assignments/index.css">
+    <link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/kanbas/profile/index.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -73,93 +76,142 @@
                 <li><a href="/kanbas/courses/coursedetails.html">Settings</a></li>
             </ul>
         </div>
-        <div>
+        <!-- Third column -->
+        <div class="wd-flex-grow-1">
+              <!-- bootstrap breadcrumb -->
+              <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">CS5610.11550.202410</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                </ol>
+            </nav>
+            <hr>
             <!-- buttons on top -->
-            <input type="text" id="searchassignments"
-            placeholder="Search for Assignments"/>
-
-            <button type="button">Group</button>
-            <button type="button">Assignment</button>
-            <select id="editdates">
-                <option value="gradebook">Edit Assignment Dates</option>
-            </select>
+            <div class="d-flex justify-content-between">
+                <input type="text" id="searchassignments"
+                placeholder="Search for Assignments" class="form-control w-25"/>
+    
+                <div class="d-flex">
+                    <button type="button" class="btn btn-light">Group</button>
+                    <button type="button" class="btn btn-danger">Assignment</button>
+                    <button type="button" class="btn btn-light"><i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i></button>
+                </div>
+            </div>
+           
             <hr>
             <!-- Assignments -->
-            <h3>ASSIGNMENTS 40% of Total
-            <select id="select-an-edit">
-                <option selected value="edit">Edit</option>
-                <option value="speedgrader">Speed Grader</option>
-                <option value="duplicate">Duplicate</option>
-                <option value="delete">Delete</option>
-                <option value="moveto">Move To...</option>
-                <option value="sendto">Send To...</option>
-                <option value="copyto">Copy To...</option>
-                <option value="sharetocommons">Share to Commons</option>
-            </select>
-            </h3>
-            <ul>
-                <li><a href=#>A1 - ENV + HTML<br/>Multiple Modules</a> | Not Available</li>
-                <li><a href=#>A2 - CSS + BOOTSTRAP<br/>Multiple Modules</a> | Not Available</li>
-                <li><a href=#>A3 - JS + REACT<br/>Multiple Modules</a> | Not Available</li>
-                <li><a href=#>A4 - STATE + REDUX<br/>Multiple Modules</a> | Not Available</li>
-                <li><a href=#>A4 - NODE + SESSION<br/>Multiple Modules</a> | Not Available</li>
-                <li><a href=#>A4 - MONGO + MONGOOSE<br/>Multiple Modules</a> | Not Available</li>
+            <ul class="list-group mb-5">
+                <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">ASSIGNMENTS
+                    <div class="d-flex justify-content-between">
+                        <span class="ps-2 badge badge-pill badge-dark">40% of Total</span>
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                    </div>
+                </li>
+                <!-- Learning objectives -->
+                <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">A1 - ENV + HTML
+                    <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                    </span>
+                </li>
+                <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">A2 - CSS + BOOTSTRAP
+                    <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                    </span>
+                </li>
+                <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">A3 - JS + REACT
+                    <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                    </span>
+                </li>
+                <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">A4 - STATE + REDUX
+                    <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                    </span>
+                </li>
+                <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">A5 - NODE + SESSION
+                    <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                    </span>
+                </li>
+                <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">A5 - MONGO + MONGOOSE
+                    <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                    </span>
+                </li>
             </ul>
-
-            <h3>Quizzes 10% of Total
-                <select id="select-an-edit">
-                    <option selected value="edit">Edit</option>
-                    <option value="speedgrader">Speed Grader</option>
-                    <option value="duplicate">Duplicate</option>
-                    <option value="delete">Delete</option>
-                    <option value="moveto">Move To...</option>
-                    <option value="sendto">Send To...</option>
-                    <option value="copyto">Copy To...</option>
-                    <option value="sharetocommons">Share to Commons</option>
-                </select>
-                </h3>
-                <ul>
-                    <li><a href=#>Q1 - ENV + HTML<br/>Multiple Modules</a> | Not Available</li>
-                    <li><a href=#>Q2 - CSS + BOOTSTRAP<br/>Multiple Modules</a> | Not Available</li>
-                    <li><a href=#>Q3 - JS.ES6<br/>Multiple Modules</a> | Not Available</li>
-                    <li><a href=#>Q4 - NODE<br/>Multiple Modules</a> | Not Available</li>
-                    <li><a href=#>Q5 - MONGO<br/>Multiple Modules</a> | Not Available</li>
-                </ul>
-
-            <h3>EXAMS 20% of Total
-                <select id="select-an-edit">
-                    <option selected value="edit">Edit</option>
-                    <option value="speedgrader">Speed Grader</option>
-                    <option value="duplicate">Duplicate</option>
-                    <option value="delete">Delete</option>
-                    <option value="moveto">Move To...</option>
-                    <option value="sendto">Send To...</option>
-                    <option value="copyto">Copy To...</option>
-                    <option value="sharetocommons">Share to Commons</option>
-                </select>
-                </h3>
-                <ul>
-                    <li><a href=#>Midterm<br/>Multiple Modules</a> | Not Available</li>
-                    <li><a href=#>Final<br/>Multiple Modules</a> | Not Available</li>
-                </ul>
-
+           <!-- Quizzes -->
+           <ul class="list-group mb-5">
+            <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">Quizzes
+                <div class="d-flex justify-content-between">
+                    <span class="ps-2 badge badge-pill badge-dark">10% of Total</span>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </div>
+            </li>
+            <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">Q1 - ENV + HTML
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </span>
+            </li>
+            <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">Q2 - CSS + BOOTSTRAP
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </span>
+            </li>
+            <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">Q3 - JS.ES6
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </span>
+            </li>
+            <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">Q4 - NODE
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </span>
+            </li>
+            <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">Q5 - MONGO
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </span>
+            </li>
+            </ul>
+       
+           <!-- Exams -->
+           <ul class="list-group mb-5">
+            <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">Exams
+                <div class="d-flex justify-content-between">
+                    <span class="ps-2 badge badge-pill badge-dark">20% of Total</span>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </div>
+            </li>
+            <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">Midterm
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </span>
+            </li>
+            <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">Final
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </span>
+            </li>
+            </ul>
             
-            <h3>PROJECTS 30% of Total
-                <select id="select-an-edit">
-                    <option selected value="edit">Edit</option>
-                    <option value="speedgrader">Speed Grader</option>
-                    <option value="duplicate">Duplicate</option>
-                    <option value="delete">Delete</option>
-                    <option value="moveto">Move To...</option>
-                    <option value="sendto">Send To...</option>
-                    <option value="copyto">Copy To...</option>
-                    <option value="sharetocommons">Share to Commons</option>
-                    </select>
-                </h3>
-                <ul>
-                    <li><a href=#>Project<br/>Multiple Modules</a> | Not Available</li>
-                </ul>
-                
+           <!-- Projects -->
+           <ul class="list-group mb-5">
+            <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">Exams
+                <div class="d-flex justify-content-between">
+                    <span class="ps-2 badge badge-pill badge-dark">30% of Total</span>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </div>
+            </li>
+            <li class="list-group-item ps-5 d-flex justify-content-between align-items-center">Project
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                </span>
+            </li>
+            </ul>     
     </div>
 </body>
 </html>
