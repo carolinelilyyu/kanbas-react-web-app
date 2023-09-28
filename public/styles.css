@@ -34,3 +34,12 @@ body * {
     display: flex;
     flex-direction: row;
 }
+
+a:link {
+   color: red;
+   text-decoration: none;
+ }
+
+ .wd-flex-grow-1{
+   flex-grow: 1;
+ }

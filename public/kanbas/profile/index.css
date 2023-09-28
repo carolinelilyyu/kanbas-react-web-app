@@ -1,0 +1,10 @@
+h2 {
+    margin-top: 0px;
+}
+label, input, select {
+    display: block;
+}
+
+label {
+    margin-bottom: 5px;
+}

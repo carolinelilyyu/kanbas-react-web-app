@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="/vendors/fontawesome/css/font-awesome.css">
     <link rel="stylesheet" href="/kanbas/kanbasnavigation/index.css">
     <link rel="stylesheet" href="/kanbas/courses/index.css">
+    <link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/kanbas/profile/index.css">
+
    <meta charset="UTF-8">
    <title>Title</title>
 </head>
@@ -65,7 +68,18 @@
         </div>
         <!-- Third column -->
         <div class="wd-flex-grow-1">
-          
+
+            <p><span><i class="fa fa-bars" aria-hidden="true"></i></span> Jose Annunziato</p>
+
+            <hr>
+            <br/>
+
+            <div class="float-end">
+                <a href="/kanbas/profile/index.html"><button type="button" class="btn btn-light"><i class="fa fa-pencil" aria-hidden="true"></i>
+                    Cancel Editting</button></a>
+            </div>
+            <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+
             <br/>
             <h2>Jose Annunziato
                
@@ -73,53 +87,64 @@
             <br/>
 
             <!-- edit title fields -->
-            <label for="text-fields-name">Name:*:</label>
-            <input type="text" id="text-fields-name"
-                   value="Jose Annunziato"/>
+            <form>
+                <div class="form-group">
+                    <label for="text-fields-name">Name:*:</label>
+                    <input type="text" id="text-fields-name"
+                        value="Jose Annunziato" class="form-control"/>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="select-pronoun">
+                    Pronouns:
+                    </label>
+                    <select class="form-control" id="select-pronoun">
+                        <option value="none">None</option>
+                    </select>
+                 </div>
+                <br/>
 
-            <label for="select-pronoun">
-              Pronouns:
-            </label>
-            <select id="select-pronoun">
-                <option value="none">None</option>
-            </select>
-            <br/>
-            <br/>
+                <label for="text-fields-name">Title:</label>
+                <input type="text" id="text-fields-name" class="form-control"/>
+                <br/>
+                
+                <!-- edit profile desc. -->
+                <h3>Contact</h3>
+                <p>
+                    No registered services, you can add on the <a href="#" class="link-danger">settings</a> page
+                </p>
+                
+                <h3>Biography</h3>
+                <textarea cols="50" class="form-control">Faculty, Software Engineer, AI, Space, and renewable enthusiast</textarea>
+                <br/>
 
-            <label for="text-fields-name">Title:</label>
-            <input type="text" id="text-fields-name"/>
-            <br/>
-            
-            <!-- edit profile desc. -->
-            <h3>Contact</h3>
-            <p>
-                No registered services, you can add on the <a href="#">settings</a> page
-            </p>
-            
-            <h3>Biography</h3>
-            <textarea cols="50">Faculty, Software Engineer, AI, Space, and renewable enthusiast</textarea>
+                <h3>Links</h3>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <label for="text-fields-name">Title</label>
+                            <input type="text" id="text-fields-name" value="Youtube" class="form-control"/> 
+                        </div>
+                        ->
+                        <div class="col">
+                            <label for="text-fields-name">URL</label>
+                            <input type="text" id="text-fields-name" value="https://www.youtube.com" class="form-control"/> 
+                            <a href="#" class="link-danger"><i class="fa fa-times" aria-hidden="true"></i>                            </a>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
 
-            <h3>Links</h3>
-            <ul>
-              <li><a href="#">Youtube</a> Links to external site</li> 
-            </ul>
-
-              <label for="text-fields-name">Title</label>
-              <input type="text" id="text-fields-name" value="Youtube"/> 
-              ->
-              <label for="text-fields-name">URL</label>
-              <input type="text" id="text-fields-name" value="https://www.youtube.com"/> 
-              <a href="#">Remove</a>
-            <br/>
-
-            <button type="button">Add another link</button><br/>
-            <a href="/kanbas/profile/index.html"><button type="button">Cancel</button></a>
-            <a href="/kanbas/profile/index.html"><button type="button">Save Profile</button></a><br/>
-            <button type="button">Edit Profile</button>
-            <button type="button">Cancel Editting</button><br/>
-        </form>
+                <button  type="button" class="btn btn-light">Add another link</button><br/>
+                <hr>
+                <div class="float-end">
+                    <a href="/kanbas/profile/index.html"><button type="button" class="btn btn-light">Cancel</button></a>
+                    <a href="/kanbas/profile/index.html"><button  type="button" class="btn btn-danger">Save Profile</button></a><br/>
+                </div>
+            </form>
         </div>
-        
+    </div>
 
 </body>
 </html>

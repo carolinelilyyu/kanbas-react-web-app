@@ -10,7 +10,6 @@ function App() {
         <br/>
         <a href="/labs/a2/index.html">Lab a2</a>
         <br/>
-
         <p>Assignments</p>
         <a href="/kanbas/index.html">Assignment 1</a>
       
