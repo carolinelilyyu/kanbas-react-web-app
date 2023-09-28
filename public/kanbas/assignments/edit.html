@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="/vendors/fontawesome/css/font-awesome.css">
     <link rel="stylesheet" href="/kanbas/kanbasnavigation/index.css">
     <link rel="stylesheet" href="/kanbas/courses/index.css">
+    <link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/kanbas/profile/index.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -76,129 +78,226 @@
           </ul>
       </div>
       <!-- Third column -->
-      <div>
-        <select id="select-one-edit">
-          <option value="speedgrader">SpeedGrader</option>
-        </select>
+
+      <div class="wd-flex-grow-1">
+        <!-- bootstrap breadcrumb -->
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#" class="link-danger">CS5610.11550.202410</a></li>
+          <li class="breadcrumb-item"><a href="#" class="link-danger">Assignments</a></li>
+          <li class="breadcrumb-item active" aria-current="page">A1 - ENV...</li>
+          </ol>
+        </nav>
+        <hr>
+        <!-- buttons on top -->
+        <div class="float-end">
+                <span><i class="fa fa-check-circle mx-2 " aria-hidden="true"></i>Published
+                <button type="button" class="btn btn-light mx-2"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
+              </span>
+        </div>
+        <br/>
         <hr>
         <h3>Assignment Name</h3>
         <input type="text" id="text-fields-assignment-name"
-        placeholder="Assignment Name" value="A1 - ENV + HTML"/>
+        placeholder="Assignment Name" value="A1 - ENV + HTML" class="form-control"/>
         <br/>
         <br/>
 
-        <textarea>This is the assignment description.</textarea>
+        <textarea class="form-control" rows="3">This is the assignment description. In later assignments the content will be different depending which assignment you click. The screen provides a form for faculty to edit the assignment including the Assignment Name, Description, Points, and Due Date. Use Bootstrap classes such as form-control, float-end, btn, btn-success, row, and col, to style the Edit Assignment screen as close to the screen shots shown below.</textarea>
         <br/>
         
-        <label>Points</label><br/>
-        <input type="text" id="text-fields-assignment-name"
-        placeholder="Points" value="100"/>
-        <br/>
-        <br/>
+        <div class="container">
+          <!-- Points -->
+          <div class="row">
+            <div class="col-2 text-end">
+              Points
+            </div>
+            <div class="col-10">
+              <input type="text" id="text-fields-assignment-name"
+              placeholder="Points" value="100" class="form-control"/>
+            </div>
+          </div>
+          <br/>
+          <!-- Assignment Group -->
+          <div class="row">
+            <div class="col-2 text-end">
+              Assignment Group
+            </div>
+            <div class="col-10">
+              <select id="select-one-assignment-group" class="form-control">
+                <option selected value="assignments">ASSIGNMENTS</option>
+            </select>
+            </div>
+          </div>
+          <br/>
 
-        <label>Assignment Group</label><br/>
-        <select id="select-one-assignment-group">
-            <option selected value="assignments">ASSIGNMENTS</option>
-        </select>
-        <br/>
-        <br/>
+          <!-- Display Grade as -->
+          <div class="row">
+            <div class="col-2 text-end">
+              Display Grade as
+            </div>
+            <div class="col-10">
+              <select id="select-one-display-grade" class="form-control">
+                <option selected value="assignments">Percentage</option>
+            </select>
+            </div>
+          </div>
+          <br/>
 
-        <label>Display Grade as</label><br/>
-        <select id="select-one-display-grade">
-            <option selected value="assignments">Percentage</option>
-        </select>
-        <br/>
-        <br/>
-        
-        <label>Submission Type</label><br/>
-        <select id="select-one-submission-type">
-            <option selected value="online">Online</option>
-        </select>
-        <br/>
-        <br/>
+          <!-- Submission Type -->
+          <div class="row">
+            <div class="col-2 text-end">
+              Submission Type
+            </div>
+            <div class="col-10">
+              <div class="form-control">
+                <form>
+                  <div class="form-group p-3">
+                    <select id="select-one-display-grade" class="form-control">
+                      <option selected value="assignments">Online</option>
+                    </select>
+                  
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2" class="mt-2"><b>Online Entry Options</b>
+                    
+                    <input type="checkbox" value="WEBSITEURL"
+                      name="check-genre" id="chkbox-websiteurl"class="form-check-input"/>
+                    <label for="chkbox-websiteurl">Website Url</label>   
+                    
 
-        <label>Online Entry Options</label><br/>
-        <input type="checkbox" value="TEXTENTRY"
-          name="check-genre" id="chkbox-textentry" />
-        <label for="chkbox-websiteurl">Comedy</label>    <br/>
-      
-        <input type="checkbox" value="WEBSITEURL"
-          name="check-genre" id="chkbox-websiteurl"/>
-        <label for="chkbox-websiteurl">Website Url</label>    <br/>
+                      <input type="checkbox" value="TEXTENTRY"
+                      name="check-genre" id="chkbox-textentry" class="form-check-input"/>
+                    <label for="chkbox-websiteurl">Text Entry</label> 
+                  
+                    <input type="checkbox" value="WEBSITEURL"
+                      name="check-genre" id="chkbox-websiteurl" class="form-check-input"/>
+                    <label for="chkbox-websiteurl">Website Url</label>  
+            
+                    <input type="checkbox" value="MEDIARECORDINGS"
+                      name="check-genre" id="chkbox-mediarecordings" class="form-check-input"/>
+                    <label for="chkbox-mediarecordings">Media Recordings</label>  
+            
+                    <input type="checkbox" value="STUDENTANNOTATION"
+                      name="check-genre" id="chkbox-studentannotation" class="form-check-input"/>
+                    <label for="chkbox-studentannotation">Student Annotation</label> 
+            
+                    <input type="checkbox" value="FILEUPLOADS"
+                      name="check-genre" id="chkbox-fileuploads"class="form-check-input"/>
+                    <label for="chkbox-fileuploads">File Uploads</label> 
+                  </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <br/>
 
-        <input type="checkbox" value="MEDIARECORDINGS"
-          name="check-genre" id="chkbox-mediarecordings"/>
-        <label for="chkbox-mediarecordings">Media Recordings</label>    <br/>
+          <!-- Submission Attempts -->
+          <div class="row">
+            <div class="col-2 text-end">
+              Submission Attempts
+            </div>
+            <div class="col-10">
+              <div class="form-control">
+                <form>
+                  <div class="form-group p-3">
+                    <label for="select-one-submission-attempts"><b>Allowed Attempts</b></label> 
 
-        <input type="checkbox" value="STUDENTANNOTATION"
-          name="check-genre" id="chkbox-studentannotation"/>
-        <label for="chkbox-studentannotation">Student Annotation</label>    <br/>
+                    <select id="select-one-submission-attempts" class="form-control">
+                      <option selected value="unlimited">Unlimited</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <br/>
 
-        <input type="checkbox" value="FILEUPLOADS"
-          name="check-genre" id="chkbox-fileuploads"/>
-        <label for="chkbox-fileuploads">File Uploads</label>    <br/>
-        <br/>
+          <!-- Plagiarism Review -->
+          <div class="row">
+            <div class="col-2 text-end">
+              Plagiarism Review
+            </div>
+            <div class="col-10">
+              <div class="form-control">
+                <form>
+                  <div class="form-group p-3">
+                    <select id="select-one-plagiarism-review" class="form-control">
+                      <option selected value="none">None</option>
+                    </select>                   
+                    <hr>
+                    <label for="select-one-submission-attempts">Show reports to students</label>    <br/>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle disabled" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Immediately
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <br/>
 
-        <label>Submission Attenpts</label><br/>
-        <select id="select-one-submission-attempts">
-            <option selected value="unlimited">Unlimited</option>
-        </select>
-        <br/>
-        <br/>
+          <!-- Assign To -->
+          <div class="row">
+            <div class="col-2 text-end">
+              Assign
+            </div>
+            <div class="col-10">
+              <div class="form-control">
+                <form>
+                  <div class="form-group p-3">
+                    
+                    <label for="select-one-submission-attempts"><b>Assign to</b></label>    <br/>
+                    <input type="text" id="text-fields-assign-to" class="form-control" value="Everyone"/>
+                    <br/>
+                    <label><b>Due</b></label><br/>
+                    <input type="date"
+                        id="text-fields-due"
+                        value="2021-01-01" class="form-control"/><br/> 
+                    <br/>
+            
+                    <div class="row">
+                      <div class="col-6">
+                        <label>Available from</label><br/>
+                        <input type="date"
+                            id="text-fields-available-from"
+                            value="2021-01-01" class="form-control"/><br/> 
+                        <br/>
+                      </div>
+                      <div class="col-6">
+                        <label>Until</label><br/>
+                        <input type="date"
+                            id="text-fields-available-from"
+                            value="2021-01-01" class="form-control"/><br/> 
+                        <br/>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <br/>
 
-
-        <label>Plagiarism Review</label><br/>
-        <select id="select-one-plagiarism-review">
-            <option selected value="none">None</option>
-        </select>
-        <br/>
-        <br/>
-
-
-        <label>Group Assignment</label><br/>
-        <input type="checkbox" value="GROUPASSIGNMENT"
-          name="check-genre" id="chkbox-groupassignment" />
-        <label for="chkbox-groupassignment">This is a gruop assignment</label>    <br/>
-        <br/>
-        
-        <label>Peer Reviews</label><br/>
-        <input type="checkbox" value="PEERREVIEWS"
-          name="check-genre" id="chkbox-peerreviews" />
-        <label for="chkbox-peerreviews">Require Peer Reviews</label>    <br/>
-      <br/>
-      
-        
-      <label>Assign</label><br/>
-      <label>Assign to</label><br/>
-      <input type="text" id="text-fields-assign-to" value="Everyone"/>
-      <br/>
-      <br/>
-      
-
-        <label>Due</label><br/>
-        <input type="date"
-            id="text-fields-due"
-            value="2021-01-01"/><br/> 
-        <br/>
-
-        <label>Available from</label><br/>
-        <input type="date"
-            id="text-fields-available-from"
-            value="2021-01-01"/><br/> 
-        <br/>
-
-        <label>Submission Attenpts</label><br/>
-        <select id="select-one-submission-attempts">
-            <option selected value="unlimited">Unlimited</option>
-        </select>
-        <br/>
-        <br/>
           
-        <button type="button">Cancel</button>
-        <button type="button">Save</button>
+        </div>
+
+      
+        <hr>
+
+        <div class="float-end m-2">
+          <button type="button" class="btn btn-light">Cancel</button>
+          <button type="button" class="btn btn-danger">Save</button>
+        </div>
+        <br/>
+        <br/>
+        <hr>
+
         </form>
                 
-  </div>
+      </div>
 
 </body>
 </html>
