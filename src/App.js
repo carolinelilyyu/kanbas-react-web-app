@@ -11,7 +11,8 @@ function App() {
         <a href="/labs/a2/index.html">Lab a2</a>
         <br/>
         <p>Assignments</p>
-        <a href="/kanbas/index.html">Assignment 1</a>
+        <a href="https://bucolic-jelly-9a09a0.netlify.app/kanbas/home.html">Assignment 1</a>
+        <a href="https://a2--bucolic-jelly-9a09a0.netlify.app/kanbas/home.html">Assignment 1</a>
       
     </div>
   );
