@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/vendors/fontawesome/css/font-awesome.css">
     <link rel="stylesheet" href="/kanbas/kanbasnavigation/index.css">
     <link rel="stylesheet" href="/kanbas/courses/index.css">
+    <link rel="stylesheet" href="/kanbas/courses/grades/index.css">
     <link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -76,74 +77,103 @@
         </div>
         <!-- Third column -->
         <div class="wd-flex-grow-1">
-            <!-- buttons on top -->
-            <select id="gradebook">
-                <option value="gradebook">Gradebook</option>
-            </select>
-            <button type="button">Import</button>
-            <select id="export">
-                <option value="export">Export</option>
-            </select>
-            <button type="button">Configure</button>
 
-            <!-- search -->
-            <h2>Student Names</h2>
-            <input id="text-fields-students" placeholder="Search Students"/>
-            <h2>Assignment Names</h2>
-            <input id="text-fields-assignments" placeholder="Search Assignments"/><br/><br/>
-            <button type="button">Apply Filters</button>
+            <!-- bootstrap breadcrumb -->
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#" class="link-danger">CS5610.11550.202410</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Grades</li>
+                </ol>
+            </nav>
+            <hr>
+
+            <!-- buttons on top -->
+            <div class="float-end">
+                <span>
+                    <button type="button" class="btn btn-light"><i class="fa fa-download" aria-hidden="true"></i>
+                        Import</button>
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-upload" aria-hidden="true"></i>Export
+                    </button>
+                    <button type="button" class="btn btn-light"><i class="fa fa-cog" aria-hidden="true"></i></button>
+                </span>
+            </div>
             <br/>
-            <br/>
+
+            <!-- Searches -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <b>Student Names</b>
+                        <input id="text-fields-students" placeholder="Search Students" class="form-control"/>
+                    </div>
+
+                    <div class="col-6">
+                        <b>Assignment Names</b>
+                        <input id="text-fields-assignments" placeholder="Search Assignments" class="form-control"/></div>
+                </div>
+                <br/>
+                <button type="button" class="btn btn-light mx-4"><i class="fa fa-filter" aria-hidden="true"></i>
+                    Apply Filters</button>
+                <br/>
+                <br/>
+                <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-striped" border="1" width="100%">
+                                <thead style="background-color: lightgray">
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>A1 SETUP<br/>Out of 100</th>
+                                        <th>A2 HTML<br/>Out of 100</th>
+                                        <th>A3 CSS<br/>Out of 100</th>
+                                        <th>A4 BOOTSTRAP<br/>Out of 100</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Alice Wonderland</td>
+                                        <td style="text-align: center">98</td>
+                                        <td style="text-align: center">89</td>
+                                        <td style="text-align: center">87</td>
+                                        <td style="text-align: center">90</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Princess Leia</td>
+                                        <td style="text-align: center">98</td>
+                                        <td style="text-align: center">80</td>
+                                        <td style="text-align: center">87</td>
+                                        <td style="text-align: center">86</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Luke SkyWalker</td>
+                                        <td >
+                                            <input type="text" value="99" style="text-align: center" class="form-control">
+                                        </td>
+                                        <td style="text-align: center">88</td>
+                                        <td style="text-align: center">97</td>
+                                        <td style="text-align: center">82</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Han Solo</td>
+                                        <td style="text-align: center">83</td>
+                                        <td style="text-align: center">99</td>
+                                        <td style="text-align: center">94</td>
+                                        <td>
+                                            <input type="text" value="98" style="text-align: center" class="form-control">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+
 
             <!-- grades table-->
-            <table class="table" border="1" width="100%">
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>A1 SETUP<br/>Out of 100</th>
-                        <th>A2 HTML<br/>Out of 100</th>
-                        <th>A3 CSS<br/>Out of 100</th>
-                        <th>A4 BOOTSTRAP<br/>Out of 100</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Alice Wonderland</td>
-                        <td style="text-align: center">98</td>
-                        <td style="text-align: center">89</td>
-                        <td style="text-align: center">87</td>
-                        <td style="text-align: center">90</td>
-                    </tr>
-
-                    <tr>
-                        <td>Princess Leia</td>
-                        <td style="text-align: center">98</td>
-                        <td style="text-align: center">80</td>
-                        <td style="text-align: center">87</td>
-                        <td style="text-align: center">86</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luke SkyWalker</td>
-                        <td >
-                            <input type="text" value="99" style="text-align: center">
-                        </td>
-                        <td style="text-align: center">88</td>
-                        <td style="text-align: center">97</td>
-                        <td style="text-align: center">82</td>
-                    </tr>
-
-                    <tr>
-                        <td>Han Solo</td>
-                        <td style="text-align: center">83</td>
-                        <td style="text-align: center">99</td>
-                        <td style="text-align: center">94</td>
-                        <td>
-                            <input type="text" value="98" style="text-align: center">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            
         </div>
 </body>
 </html>

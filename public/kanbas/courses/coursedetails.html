@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/vendors/fontawesome/css/font-awesome.css">
     <link rel="stylesheet" href="/kanbas/kanbasnavigation/index.css">
     <link rel="stylesheet" href="/kanbas/courses/index.css">
+    <link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.min.css">
    <meta charset="UTF-8">
    <title>Title</title>
 </head>
@@ -75,117 +76,145 @@
         </div>
         <!-- Third column -->
         <div class="wd-flex-grow-1">
-            <a href="/kanbas/courses/coursedetails.html">Course Details</a>
-            <a href="#">Sections</a>
-            <a href="/kanbas/courses/coursenavigation.html">Navigation</a>
-            <a href="#">Apps</a>
-            <a href="#">Feature Options</a>
-            <a href="#">Integration</a>
-
-            <h1>Course Details</h1>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link text-danger active" aria-current="page" href="/kanbas/courses/coursedetails.html">Course Details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-danger" href="#">Sections</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-danger" href="/kanbas/courses/coursenavigation.html">Navigation</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-danger" href="#">Apps</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-danger" href="#">Feature Options</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-danger" href="#">Integration</a>
+                </li>
+              </ul>
+              
             
-            <label for="image"><h3>Image:</h3></label>
-            <img />
-            <button type="button">Choose Image</button>
-
-            <table>
+            <table class="table table-borderless">
                 <tr>
-                    <td><h3>Name:</h3></td>
+
+                <h1 class="mt-5">Course Details</h1>
+                    
+                <td>
+                    <label for="image"><b>Image:</b></label>
+                </td>
+                <td>
+                    <button type="button" class="border btn btn-light m-5">Choose Image</button>
+                </td>
+                <img />
+        
+                </tr>
+                <tr>
+                    <td><b>Name:</b></td>
                     <td>CS4550 12631 Web Development</td>
                 </tr>
                 <tr>
-                    <td><h3>Course Code:</h3></td>
+                    <td><b>Course Code:</b></td>
                     <td>CS4550.12631.202410</td>
                 </tr>
                 <tr>
-                    <td><h3>Blueprint Course:</h3></td>
+                    <td><b>Blueprint Course:</b></td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td><h3>Course Template:</h3></td>
+                    <td><b>Course Template:</b></td>
                     <td>
-                            <input type="checkbox" value="TEMPLATE"
+                            <input class="form-check-input" type="checkbox" value="TEMPLATE"
                             name="check-template" id="chkbox-template"/>
                             <label for="chkbox-template">Enable Course as a Template</label>
                     </td>  
                 </tr>  
                 <tr>
-                    <td><h3>Timezone:</h3></td>
+                    <td><b>Timezone:</b></td>
                     <td>
-                            <select id="select-one-timezone">
+                            <select id="select-one-timezone" class="form-control">
                                 <option value="EST">Eastern Time (US & Canada) (-05:00/04:00)</option>
                              </select>
                     </td>
                 </tr>
                 <tr>
-                    <td><h3>SIS ID:</h3></td>
+                    <td><b>SIS ID:</b></td>
                     <td>CS4550.12631.202410</td>
                 </tr>
                 <tr>
-                    <td><h3>Subaccount</h3></td>
+                    <td><b>Subaccount</b></td>
                     <td>CS Undergrad</td>
                 </tr>
                 <tr>
-                    <td><h3>Term:</h3></td>
+                    <td><b>Term:</b></td>
                     <td>202410_1 Fall 2023 Semester Full Term</td>
                 </tr>
                 <tr>
-                    <td><h3>Participation:</h3></td>
+                    <td><b>Participation:</b></td>
                     <td>
-                            <select id="select-one-participation">
-                                <option value="term">Term</option>
-                             </select>
+                        <form>
+                            <div class="container">
+                                <div class="row">
+                                    <select id="select-one-participation" class="form-control">
+                                        <option value="term">Term</option>
+                                     </select>
+                                </div>
+                                <div class="row">
+                                    Course participation is limited to term start and end dates
+                                </div>
+
+                                <div class="row">
+                                        <label for="text-fields-start-date">
+                                                <b>Start Date:</b>
+                                             </label>
+                                        <input class="form-control" type="date"
+                                        id="text-fields-start-date"
+                                        value="2000-01-21"/><br/>
+                                </div>
+
+                                <div class="row">
+                                    <label for="text-fields-end-date">
+                                        <b>End Date:</b>
+                                        </label>
+                                    <input class="form-control" type="date"
+                                    id="text-fields-end-date"
+                                    value="2000-01-21"/><br/>
+                                </div>
+
+                                <div class="row">
+                                    <span>
+                                        <input class="form-check-input" type="checkbox" value="viewbefore"
+                                        name="check-viewbefore" id="chkbox-viewbefore"/>
+                                        <label for="chkbox-viewbefore">Restrict students from viewing
+                                            course before term start date
+                                        </label>
+                                    </span>
+                                </div>
+
+                                <div class="row">
+                                    <span>
+                                        <input class="form-check-input" type="checkbox" value="viewafter"
+                                        name="check-viewafter" id="chkbox-viewafter"/>
+                                        <label for="chkbox-viewafter">Restrict students from viewing
+                                            course after term start date
+                                        </label>
+                                    </span>
+                                    
+                                </div>
+
+                            </div>
+                        </form>
+                            
                     </td>
                 </tr>
+                
                 <tr>
-                    <td colspan="3">Course participation is limited to term start and end dates</td>
-                </tr>
-
-                <tr>
+                    <td><b>Default due time:</b></td>
                     <td>
-                        <label for="text-fields-start-date">
-                                <h3>Start Date:</h3>
-                             </label>
-                        <input type="date"
-                        id="text-fields-start-date"
-                        value="2000-01-21"/><br/>
-
-                    </td>              
-                </tr>
-
-                <tr>
-                    <td>
-                        <label for="text-fields-end-date">
-                            <h3>End Date:</h3>
-                            </label>
-                        <input type="date"
-                        id="text-fields-end-date"
-                        value="2000-01-21"/><br/>
-                    </td>              
-                </tr>
-
-                <tr>
-                    <td>
-                        <input type="checkbox" value="viewbefore"
-                        name="check-viewbefore" id="chkbox-viewbefore"/>
-                        <label for="chkbox-viewbefore">Restrict students from viewing
-                            course before term start date
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" value="viewafter"
-                        name="check-viewafter" id="chkbox-viewafter"/>
-                        <label for="chkbox-viewafter">Restrict students from viewing
-                            course after term start date
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td><h3>Default due time:</h3></td>
-                    <td>
-                            <select id="select-one-defaultduetime">
+                            <select id="select-one-defaultduetime" class="form-control">
                                 <option value="defaultduetime">Account default (11:59pm)</option>
                              </select>
                              <p>This influences the user interface for setting due dates. 
@@ -193,46 +222,46 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><h3>Language:</h3></td>
+                    <td><b>Language:</b></td>
                     <td>
-                            <select id="select-one-language">
+                            <select id="select-one-language" class="form-control">
                                 <option value="language">Not set (user-configurable, defaults to English (Unit))</option>
                              </select>
                              <p>This will override any user/system language preferences. This is only recommended foreign language courses.</p>
                     </td>
                 </tr>
                 <tr>
-                    <td><h3>File Storage:</h3></td>
+                    <td><b>File Storage:</b></td>
                     <td>10000 megabytes</td>
                 </tr>
                 <tr>
-                    <td><h3>Large Course:</h3></td>
+                    <td><b>Large Course:</b></td>
                     <td>
-                        <input type="checkbox" value="largecourse"
+                        <input class="form-check-input" type="checkbox" value="largecourse"
                             name="check-largecourse" id="chkbox-largecourse"/>
                         <label for="chkbox-largecourse">Launch SpeedGrader Filtered by Student Group</label>    <br/>
                     </td>
                 </tr>
                 <tr>
-                    <td><h3>Grading Scheme:</h3></td>
+                    <td><b>Grading Scheme:</b></td>
                     <td>
-                        <input type="checkbox" value="gradingscheme"
+                        <input class="form-check-input" type="checkbox" value="gradingscheme"
                             name="check-gradingscheme" id="chkbox-gradingscheme"/>
                         <label for="chkbox-gradingscheme">Grading Scheme</label>    <br/>
                     </td>
                 </tr>
                 <tr>
-                    <td><h3>License:</h3></td>
+                    <td><b>License:</b></td>
                     <td>
-                        <select id="select-one-license">
+                        <select id="select-one-license" class="form-control">
                             <option value="license">Private (Copyrighted)</option>
                          </select>
                         </td>
                 </tr>
                 <tr>
-                    <td><h3>File Copyright:</h3></td>
+                    <td><b>File Copyright:</b></td>
                     <td>
-                        <select id="select-one-license">
+                        <select id="select-one-license" class="form-control">
                             <option value="license">Copyright and license information
                                 must be provided for files before they are published
                             </option>
@@ -241,15 +270,15 @@
                 </tr>
 
                 <tr>
-                    <td><h3>Visibility</h3></td>
+                    <td><b>Visibility</b></td>
                     <td>
                         <p>If you need to make your course public please contact your administrator/support</p>
-                        <select id="select-one-visiblity">
+                        <select id="select-one-visiblity" class="form-control">
                             <option value="visiblity">Course
                             </option>
                          </select>
                          <br/>
-                         <input type="checkbox" value="includecourse"
+                         <input class="form-check-input" type="checkbox" value="includecourse"
                          name="check-includecourse" id="chkbox-includecourse"/>
                          <label for="chkbox-includecourse">Include this course in the public course index</label>    <br/>
                     </td>
@@ -258,9 +287,9 @@
 
 
                 <tr>
-                    <td><h3>Format:</h3></td>
+                    <td><b>Format:</b></td>
                     <td>
-                        <select id="select-one-format">
+                        <select id="select-one-format" class="form-control">
                             <option value="format">On Campus
                             </option>
                          </select>
@@ -269,35 +298,37 @@
 
 
                 <tr>
-                    <td><h3>Mastery Paths:</h3></td>
+                    <td><b>Mastery Paths:</b></td>
                     <td>
-                        <input type="checkbox" value="masterypaths"
+
+                        <input class="form-check-input" type="checkbox" value="masterypaths"
                         name="check-masterypaths" id="chkbox-masterypaths"/>
+
                         <label for="chkbox-masterypaths">Enable individual learning 
                             paths for students based on assesment
                         </label> 
+
                     </td> 
                 </tr>
 
 
                 <tr>
-                    <td><h3>Description</h3></td>
+                    <td><b>Description</b></td>
                     <td>    
-                        <textarea cols="30" rows="10"></textarea>
+                        <textarea class="form-text" cols="30" rows="10"></textarea>
                         <br/>
-                        <a href=#>more options</a>
+                        <a href="www.youtube.com" class="text-danger">more options</a>
                     </td>
                 </tr>
 
 
-                <tr>
-                    <td>    
-                        <button type="button">Update Course Details</button>
-                    </td>
-                </tr>
 
                 </form>
             </table>
+
+            <div class="float-end mb-5">
+                <button type="button" class="btn btn-danger">Update Course Details</button>
+            </div>
             <br/>
 
         </div>

@@ -1,0 +1,16 @@
+.table {
+    border: 1px solid gray;
+  }
+  
+  .table thead th {
+    border-top: 1px solid gray!important;
+    border-bottom: 1px solid gray!important;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+  }
+  
+  .table td {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: none!important;
+  }
