@@ -12,10 +12,8 @@
 </head>
 <body>
     <!-- First column -->
-
-
     <div class="wd-flex-row-container">
-        <div class="wd-bg-color-black">
+        <div class="wd-bg-color-black d-sm-none d-md-none d-lg-block">
             <ul class="wd-kanbas-navigation">
                 <li><a href="/kanbas/profile/index.html">
                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -53,10 +51,10 @@
                     <br/>
                     Help</a></li>
             </ul>
-            </div>
+        </div>
         <!-- Second column -->
         <div>
-            <ul class="wd-course-navigation">
+            <ul class="wd-course-navigation d-sm-none d-md-none d-lg-block">
                 <li class="wd-active"><a href="/kanbas/courses/home.html">Home</a></li>
                 <li><a href=#>Modules</a></li>
                 <li><a href=#>Piazza</a></li>
@@ -78,7 +76,22 @@
             </ul>
         </div>
         <!-- Third column -->
-        <div class="wd-flex-grow-1">
+        <div class="wd-flex-grow-1 d-none d-sm-block">
+
+            <!-- Alternative breadcrumb -->
+            <div class="topnav d-none d-sm-block d-md-block d-lg-none">
+                <a class="active">CS5610.11550.202410</a>
+                
+                <!-- "Hamburger menu" / "Bar icon" to toggle the kanbas navigation  -->
+                <a href="/kanbas/kanbasnavigation/hamburgerversion.html" class="icon">
+                <i class="fa fa-bars"></i>
+                </a>
+
+                <!-- "Chevron menu" / "Drop icon" to toggle the course navigation -->
+                <a href="/kanbas/courses/hamburgerversion.html" class="icon2">
+                    <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                </a>
+            </div>
             <!-- bootstrap breadcrumb -->
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -241,7 +254,7 @@
                 
         </div>
         <!-- Fourth column -->
-        <div>
+        <div class="d-none d-xxl-block">
             <h2>Course Status</h2>
             <!-- buttons -->
             <button type="button">Unpublish</button>
