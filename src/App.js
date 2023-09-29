@@ -13,7 +13,7 @@ function App() {
         <p>Assignments</p>
         <a href="https://a1--bucolic-jelly-9a09a0.netlify.app/kanbas/home.html">Assignment 1</a>
         <br/>
-        <a href="https://a2--bucolic-jelly-9a09a0.netlify.app/kanbas/home.html">Assignment 2</a>
+        <a href="/kanbas/index.html">Assignment 2</a>
       
     </div>
   );
