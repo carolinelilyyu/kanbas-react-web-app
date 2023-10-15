@@ -1,0 +1,84 @@
+.wd-course-navigation {
+    list-style: none;
+    background-color: white;
+    padding: 0;
+    width: 200px;
+    margin: 0;
+    margin-left: 20px;
+    border-style: none;
+}
+
+.wd-course-navigation a {
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-style: none;
+    
+}
+
+.wd-course-navigation a.active {
+    border-left: 3px solid black;
+    background-color: white;
+}
+
+
+.wd-course-navigation a.active{
+    color: black;
+}
+
+
+.wd-course-navigation a {
+    color: red;
+    text-decoration: none;
+}
+
+.list-group .fa-check-circle {
+    color: green;
+}
+
+.wd-white{
+    color: white;
+}
+
+.wd-center {
+    display: inline;
+    text-align: center;
+}
+
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color: black;
+    position: relative;
+  }
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    display: block;
+  }
+  
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 100;
+    top: 0;
+  }
+  
+
+  /* Style the hamburger menu */
+  .topnav a.icon2 {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  

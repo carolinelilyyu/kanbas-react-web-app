@@ -1,22 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Labs from "./Labs";
+import HelloWorld from "./Labs/a3/HelloWorld";
+import Kanbas from "./Kanbas";
+import {HashRouter} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router";
 function App() {
   return (
-    <div className="App">
-       
-        <p>Labs</p>
-        <a href="/labs/a1/index.html">Lab a1</a>
-        <br/>
-        <a href="/labs/a2/index.html">Lab a2</a>
-        <br/>
-        <p>Assignments</p>
-        <a href="https://a1--bucolic-jelly-9a09a0.netlify.app/kanbas/home.html">Assignment 1</a>
-        <br/>
-        <a href="/kanbas/index.html">Assignment 2</a>
-      
-    </div>
-  );
+    <HashRouter>
+      <div>
+        <Routes>
+          <Route path="/"         element={<Navigate to="/Labs"/>}/>
+          <Route path="/hello"    element={<HelloWorld/>}/>
+          <Route path="/Labs/*"   element={<Labs/>}/>
+          <Route path="/Kanbas/*" element={<Kanbas/>}/>
+        </Routes>
+      </div>
+  </HashRouter>
+   );
 }
-
 export default App;
