@@ -1,0 +1,20 @@
+
+.list-group .fa-check-circle {
+    color: rgb(96, 171, 96);
+}
+
+.list-group .badge-pill {
+    color:black;
+}
+
+.list-group-item {
+    color: black;
+}
+
+.rounded {
+  border-radius: 50%;
+  border: 2px solid rgb(142, 142, 142);
+  padding: 20px;
+  margin-right: 5px;
+  background-color: rgb(239, 239, 239);
+}
