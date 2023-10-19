@@ -7,7 +7,7 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
-
+import {RxHamburgerMenu} from "react-icons/rx"
 function Courses(){
     const {courseId} = useParams();
     const {pathname} = useLocation();
@@ -15,7 +15,13 @@ function Courses(){
     const course = db.courses.find((course) => course._id === courseId);
     return (
         <div>
-            <h1>Courses {course.name} / {screen}</h1>
+            <div className="breadcrumb d-sm-none d-md-none d-lg-block">
+                <h5>
+                    <span class="item"><RxHamburgerMenu fontSize="1.5em"/></span>
+                    <span class="item">Courses {course.name} / {screen}</span>
+                </h5>
+            </div>
+
             <CourseNavigation />
             <div className="wd-courses">
             <div

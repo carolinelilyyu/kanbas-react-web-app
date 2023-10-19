@@ -1,0 +1,108 @@
+{
+    "folder-color.pathColors": [
+        {
+            "folderPath": "src/Kanbas/Database/",
+            "color": "foldercolorizer.LightYellow"
+        },
+        {
+            "folderPath": "src/Kanbas/Database/assignments.json/",
+            "color": "foldercolorizer.LightYellow"
+        },
+        {
+            "folderPath": "src/Kanbas/CourseNavigation/",
+            "color": "foldercolorizer.LightSalmon"
+        },
+        {
+            "folderPath": "src/Kanbas/Courses/",
+            "color": "foldercolorizer.LimeGreen"
+        },
+        {
+            "folderPath": "src/Kanbas/Dashboard/",
+            "color": "foldercolorizer.SteelBlue"
+        },
+        {
+            "folderPath": "src/Kanbas/Courses/Status/",
+            "color": "foldercolorizer.LightMaroon"
+        },
+        {
+            "folderPath": "src/Kanbas/Courses/Modules/",
+            "color": "foldercolorizer.LightPink"
+        },
+        {
+            "folderPath": "src/Kanbas/Courses/Home/",
+            "color": "foldercolorizer.PureGold"
+        },
+        {
+            "folderPath": "src/Kanbas/Courses/Grades/",
+            "color": "foldercolorizer.LightRed"
+        },
+        {
+            "folderPath": "src/Kanbas/Courses/Assignments/",
+            "color": "foldercolorizer.DeepSkyBlue"
+        },
+        {
+            "folderPath": "src/Kanbas/Calendar/",
+            "color": "foldercolorizer.beige"
+        },
+        {
+            "folderPath": "src/Kanbas/Account/",
+            "color": "foldercolorizer.lavender"
+        },
+        {
+            "folderPath": "src/Kanbas/KanbasNavigation/",
+            "color": "foldercolorizer.indigo"
+        },
+        {
+            "folderPath": "src/Kanbas/",
+            "color": "foldercolorizer.GrayishSilver"
+        },
+        {
+            "folderPath": "src/Labs/",
+            "color": "foldercolorizer.cyan"
+        },
+        {
+            "folderPath": "src/styles.css/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/App.css/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/Nav.js/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/App.js/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/App.test.js/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/index.css/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/index.js/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/logo.svg/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/setupTests.js/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/reportWebVitals.js/",
+            "color": "foldercolorizer.ruby"
+        },
+        {
+            "folderPath": "src/Kanbas/Inbox/",
+            "color": "foldercolorizer.plum"
+        }
+    ]
+}

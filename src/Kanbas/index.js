@@ -5,7 +5,7 @@ import Account from "./Account";
 import Calendar from "./Calendar";
 import Courses from "./Courses";
 import Dashboard from "./Dashboard";
-
+import Inbox from "./Inbox";
 function Kanbas() {
     return(
    <div>

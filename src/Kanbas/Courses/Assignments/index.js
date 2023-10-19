@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import db from "../../Database";
 import "./index.css"
+import {FaEllipsisVertical} from "react-icons/fa6"
+import {AiOutlineCheckCircle} from "react-icons/ai";
 
 function Assignments() {
   const { courseId } = useParams();
@@ -25,18 +27,19 @@ function Assignments() {
                   <div class="d-flex">
                       <button type="button" class="btn btn-light">Group</button>
                       <button type="button" class="btn btn-danger">Assignment</button>
-                      <button type="button" class="btn btn-light"><i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i></button>
+                      <button type="button" class="btn btn-light">
+                        <FaEllipsisVertical />
+                      </button>
                   </div>
               </div>
-
-              
+              <hr />
               {/* <!-- Assignments --> */}
               <ul class="list-group rounded-0">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">ASSIGNMENTS
                       <div class="d-flex justify-content-between">
                           <span class="ps-2 badge badge-pill badge-dark rounded">40% of Total</span>
-                          <i class="fa fa-check-circle" aria-hidden="true"></i>
-                          <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i>
+                          <AiOutlineCheckCircle className="fa-check-circle"/>
+                          <FaEllipsisVertical/>
                       </div>
                   </li>
               </ul>
@@ -50,8 +53,10 @@ function Assignments() {
           <a href="/kanbas/assignments/edit.html" class="list-group-item list-group-item-action ps-5 d-flex justify-content-between flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{assignment.title}</h5>
-              <small class="text-muted"><i class="fa fa-check-circle" aria-hidden="true"></i>
-                  <i class="fa fa-ellipsis-v ps-2" aria-hidden="true"></i></small>
+              <small class="text-muted">
+                <AiOutlineCheckCircle className="fa-check-circle"/>
+                <FaEllipsisVertical/>
+              </small>
               </div>
           <p class="mb-1">{assignment.course}</p>
           <small class="text-muted">Due {assignment.duedate}</small>

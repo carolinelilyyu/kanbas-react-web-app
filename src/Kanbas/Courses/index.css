@@ -40,11 +40,27 @@
     color: white;
 }
 
+.test {
+    background-color: black;
+}
+
 .wd-center {
     display: inline;
     text-align: center;
 }
 
+.breadcrumb {
+    color: red;
+    margin: 20px;
+}
+
+span.item {
+    display: inline; /* the default for span */
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+}
+  
 /* Style the navigation menu */
 .topnav {
     overflow: hidden;
