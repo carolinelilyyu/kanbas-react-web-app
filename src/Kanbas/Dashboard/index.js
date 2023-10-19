@@ -20,8 +20,10 @@ function Dashboard(){
                       <div class="card-body">
                         <h5 class="card-title">{course._id}</h5>
                         <Link key={course._id} to={`/Kanbas/Courses/${course._id}`} className="list-group-item">
-                          {course.name}
+                          <b>{course.name} {course.number}</b>
                         </Link>
+                        <p class="text-muted">{course.startDate} TO {course.endDate}</p>
+
                         <p class="card-text">{course.description}</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                       </div>

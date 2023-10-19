@@ -18,7 +18,7 @@ function Courses(){
             <div className="breadcrumb d-sm-none d-md-none d-lg-block">
                 <h5>
                     <span class="item"><RxHamburgerMenu fontSize="1.5em"/></span>
-                    <span class="item">Courses {course.name} / {screen}</span>
+                    <span class="item">Course {course.name} / {screen}</span>
                 </h5>
             </div>
 
