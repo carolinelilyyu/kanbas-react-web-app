@@ -1,23 +1,29 @@
+
+import Assignment4 from "./a4";
+import {Routes, Route, Navigate} from "react-router";
 import Nav from "../Nav";
-import JavaScript from "./a3/JavaScript";
-import PathParameters from "./a3/PathParameters";
-import Classes from "./a3/Classes";
-import Styles from "./a3/Styles";
-import ConditionalOutput from "./a3/ConditionalOutput";
-import TodoList from "./a3/todo";
-function Assignment3() {
+import Assignment3 from "./a3";
+import store from "./store";
+import { Provider } from "react-redux";
+function Labs() {
  return (
    <div>
+      <Provider store={store}>
       <Nav/>
-      <h1>Assignment 3</h1>
-      <TodoList />
-      <ConditionalOutput />
-      <Styles />
-      <Classes/>
-      <PathParameters />
-      <JavaScript/>
+     <Routes>
+       <Route path="/"
+        element={<Navigate
+                  to="a3"/>}/>
+       <Route path="a3"
+        element={<Assignment3/>}/>
+       <Route path="a4"
+        element={<Assignment4/>}/>
+     </Routes>
+     </Provider>
+
+      
    </div>
  );
 }
-export default Assignment3;
+export default Labs;
 
