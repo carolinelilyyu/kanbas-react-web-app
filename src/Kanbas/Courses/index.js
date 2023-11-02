@@ -8,11 +8,11 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import {RxHamburgerMenu} from "react-icons/rx"
-function Courses(){
+function Courses({ courses }){
     const {courseId} = useParams();
     const {pathname} = useLocation();
-    const [qwe, kanbas, courses, id, screen] = pathname.split("/");
-    const course = db.courses.find((course) => course._id === courseId);
+    const [qwe, kanbas, coursess, id, screen] = pathname.split("/");
+    const course = courses.find((course) => course._id === courseId);
     return (
         <div>
             <div className="breadcrumb d-sm-none d-md-none d-lg-block">
