@@ -4,12 +4,38 @@ import db from "../../Database";
 import "./index.css"
 import {FaEllipsisVertical} from "react-icons/fa6"
 import {AiOutlineCheckCircle} from "react-icons/ai";
+// import {
+//   addAssignment,
+//   deleteAssignment,
+//   updateAssignment,
+//   setAssignment,
+//   setAssignments,
+// } from "./assignmentsReducer";
+// import * as client from "./client";
 
 function Assignments() {
   const { courseId } = useParams();
   const assignments = db.assignments;
   const courseAssignments = assignments.filter(
     (assignment) => assignment.course === courseId);
+  // const handleUpdateAssignment = async () => {
+  //   const status = await client.updateAssignment(module);
+  //   dispatch(updateAssignment(module));
+  // };
+  
+  // const handleDeleteModule = (moduleId) => {
+  //     console.log("delete module inside modulelist");
+  //     client.deleteModule(moduleId).then((status) => {
+  //       dispatch(deleteModule(moduleId));
+  //     });
+  //   };
+  
+  // const handleAddModule = () => {
+  //     client.createModule(courseId, module).then((module) => {
+  //     dispatch(addModule(module));
+  //     });
+  // };
+
   return (
     <div>
 

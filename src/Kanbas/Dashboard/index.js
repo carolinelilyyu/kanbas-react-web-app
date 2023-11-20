@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { React, useState } from "react";
 
-import db from "../Database";
+// import db from "../Database";
 import "./index.css";
 import "../../styles.css";
 
@@ -31,7 +31,7 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
           
           <button 
           type="button" class="btn btn-light"
-          onClick={updateCourse} >
+          onClick={()=>updateCourse(course)} >
             Update
           </button>
 
@@ -61,7 +61,7 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
                           type="button" class="btn btn-danger"
                           onClick={(event) => {
                             event.preventDefault();
-                            deleteCourse(course._id);
+                            deleteCourse(course);
                           }}>
                           Delete
                         </button>  

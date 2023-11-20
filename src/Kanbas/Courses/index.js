@@ -1,4 +1,6 @@
 import { Navigate, Routes, Route, useParams, useLocation } from "react-router";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import db from "../Database";
 import CourseNavigation from "../CourseNavigation";
 import Modules from "./Modules";
@@ -10,9 +12,21 @@ import Grades from "./Grades";
 import {RxHamburgerMenu} from "react-icons/rx"
 function Courses({ courses }){
     const {courseId} = useParams();
+    const URL = "http://localhost:4000/api/courses";
+    const [course, setCourse] = useState({});
+    const findCourseById = async (courseId) => {
+      const response = await axios.get(
+        `${URL}/${courseId}`
+      );
+      setCourse(response.data);
+    };
+    useEffect(() => {
+        findCourseById(courseId);
+      }, [courseId]);
+    
     const {pathname} = useLocation();
     const [qwe, kanbas, coursess, id, screen] = pathname.split("/");
-    const course = courses.find((course) => course._id === courseId);
+    // const course = courses.find((course) => course._id === courseId);
     return (
         <div>
             <div className="breadcrumb d-sm-none d-md-none d-lg-block">
