@@ -3,6 +3,7 @@ import {
     BsTrash3Fill, BsFillCheckCircleFill,
     BsPencil, BsPlusCircleFill,
   } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import * as client from "./client";
 
 function UserTable() {
@@ -19,6 +20,7 @@ function UserTable() {
   const selectUser = async (user) => {
     try {
       const u = await client.findUserById(user._id);
+      console.log(user._id);
       setUser(u);
     } catch (err) {
       console.log(err);
@@ -86,7 +88,11 @@ function UserTable() {
         <tbody>
           {users.map((user) => (
             <tr key={user._id}>
-              <td>{user.username}</td>
+                <td>
+                    <Link to={`/project/account/${user._id}`}>
+                    {user.username}
+                    </Link>
+                </td>
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td className="text-nowrap">
