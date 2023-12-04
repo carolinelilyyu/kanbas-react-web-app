@@ -3,7 +3,6 @@ import Home from "./home";
 import Signin from "./users/signin";
 import Signup from "./users/signup";
 import Account from "./users/account";
-import UserList from "./users/list";
 import Admin from "./users/admin";
 
 import Search from "./search";
@@ -36,7 +35,6 @@ function Project() {
             <Route path="/search" element={<Search />} />
             <Route path="/search/:search" element={<Search />} />
             <Route path="/details/:id" element={<Details />} />
-            <Route path="/users" element={<UserList />} />
           </Routes>
         </div>
       </div>
