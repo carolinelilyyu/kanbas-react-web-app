@@ -84,7 +84,7 @@ function UserTable() {
                 className="text-success fs-1 text" />
             </td>
           </tr>
-        </thead>
+        </thead> 
         <tbody>
           {users.map((user) => (
             <tr key={user._id}>
