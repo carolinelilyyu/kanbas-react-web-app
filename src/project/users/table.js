@@ -17,10 +17,10 @@ function UserTable() {
       console.log(err);
     }
   };
+
   const selectUser = async (user) => {
     try {
       const u = await client.findUserById(user._id);
-      console.log(user._id);
       setUser(u);
     } catch (err) {
       console.log(err);
@@ -34,6 +34,7 @@ function UserTable() {
       console.log(err);
     }
   };
+
   const deleteUser = async (user) => {
     try {
       await client.deleteUser(user);
@@ -99,8 +100,10 @@ function UserTable() {
                 <button className="btn btn-danger me-2">
                 <BsTrash3Fill onClick={() => deleteUser(user)} />
                 </button>
+
                 <button className="btn btn-warning me-2">
                 <BsPencil onClick={() => selectUser(user)} />
+
                 </button>
             </td>
             </tr>))}
