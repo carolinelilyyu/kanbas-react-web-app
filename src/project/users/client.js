@@ -29,9 +29,7 @@ export const signup = async (user) => {
 export const signout = async () => {
   const response = await request.post(`${USERS_API}/signout`);
   return response.data; };
-
-  export const findUserById = async (id) => {
-    const response = await axios.get(`${USERS_API}/${id}`);
-    return response.data;
-  };
-  
+export const findUserById = async (userId) => {
+  const response = await request.get(`${USERS_API}/${userId}`);
+  return response.data; 
+};
