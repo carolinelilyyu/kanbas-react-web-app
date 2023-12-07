@@ -12,7 +12,9 @@ import Grades from "./Grades";
 import {RxHamburgerMenu} from "react-icons/rx"
 function Courses({ courses }){
     const {courseId} = useParams();
-    const URL = "https://kanbas-node-server-app-2-x5nj.onrender.com/api/courses";
+    // const URL = "https://kanbas-node-server-app-2-x5nj.onrender.com/api/courses";
+    const URL = "http://localhost:4000/api/courses";
+
     const [course, setCourse] = useState({});
     const findCourseById = async (courseId) => {
       const response = await axios.get(
