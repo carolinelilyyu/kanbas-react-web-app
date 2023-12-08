@@ -76,7 +76,9 @@ function Assignments() {
           to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
           className="list-group-item">
           {/* Assignments */}
-          <a href="/kanbas/assignments/edit.html" class="list-group-item list-group-item-action ps-5 d-flex justify-content-between flex-column align-items-start">
+          <a href="/kanbas/assignments/edit.html" 
+          class="list-group-item list-group-item-action ps-5 d-flex 
+          justify-content-between flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{assignment.title}</h5>
               <small class="text-muted">

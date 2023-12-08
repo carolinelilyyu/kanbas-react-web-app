@@ -1,0 +1,73 @@
+.quiz .btn.btn-secondary {
+    color: black;
+    background-color: white;
+    border-color: aliceblue;
+    cursor:pointer;
+    margin: 25px;
+    padding: 10px;
+}
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.icon, .chevron-icon {
+    margin-left: 15px;
+    margin-right: 15px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 20px; 
+    cursor: pointer;
+}
+
+.chevron-icon {
+    font-size: 10px; 
+}
+
+.icons-container-red {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.icons-red {
+    color: rgb(206, 28, 28);
+    margin: 10px;
+    cursor: pointer;
+}
+
+.label-table{
+text-align: left;
+    float: left;
+}
+.second-col{
+    margin: 10px;
+    float: left;
+}
+
+.separator{
+   font-size: 26px;
+   color: rgb(160, 157, 157);
+   opacity: 60%;
+   
+}
+
+.inner-table{
+    border: solid;
+    border-bottom: dashed;
+    border-color: rgb(169, 167, 167);
+    border-bottom-color: rgb(224, 226, 228);
+    padding: 20px;
+}
+
+.content{
+    padding: 10px;
+    text-align: left;
+}
+
+.btn-group.end {
+    display: flex;
+    justify-content: flex-end;
+}

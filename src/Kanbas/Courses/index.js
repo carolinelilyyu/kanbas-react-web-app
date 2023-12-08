@@ -1,7 +1,6 @@
 import { Navigate, Routes, Route, useParams, useLocation } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import db from "../Database";
 import CourseNavigation from "../CourseNavigation";
 import Modules from "./Modules";
 import "./index.css";
@@ -10,6 +9,9 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import {RxHamburgerMenu} from "react-icons/rx"
+import Quizzes from "./Quizzes";
+import QuizDisplay from "./Quizzes/quizDisplay";
+import QuizEdit from "./Quizzes/editQuiz/quizedit";
 function Courses({ courses }){
     const {courseId} = useParams();
     // const URL = "https://kanbas-node-server-app-2-x5nj.onrender.com/api/courses";
@@ -52,6 +54,16 @@ function Courses({ courses }){
                 <Route path="Home" element={<Home/>} />
                 <Route path="Modules" element={<Modules />} />
                 <Route path="Assignments" element={<Assignments />} />
+                <Route path="Quizzes" element={<Quizzes />} />
+                <Route
+                path="Quizzes/:quizId"
+                element={<QuizDisplay />}
+                />
+                <Route
+                path="Quizzes/:quizId/edit"
+                element={<QuizEdit />}
+                />
+                
                 <Route
                 path="Assignments/:assignmentId"
                 element={<AssignmentEditor />}
