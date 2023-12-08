@@ -9,6 +9,7 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
+import Questions from "./Questions";
 import {RxHamburgerMenu} from "react-icons/rx"
 function Courses({ courses }){
     const {courseId} = useParams();
@@ -57,6 +58,7 @@ function Courses({ courses }){
                 element={<AssignmentEditor />}
                 />
                 <Route path="Grades" element={<Grades />} />
+                <Route path="Questions" element={<Questions />} />
             </Routes>
             </div>
         </div>
