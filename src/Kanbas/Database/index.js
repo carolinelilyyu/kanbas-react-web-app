@@ -4,6 +4,7 @@ import assignments from "./assignments.json";
 import users from "./users.json";
 import enrollments from "./enrollments.json";
 import grades from "./grades.json";
+import quizzes from "./quizzes.json";
 
 export default {
     courses,
@@ -12,4 +13,5 @@ export default {
     users,
     enrollments,
     grades,
+    quizzes,
 };

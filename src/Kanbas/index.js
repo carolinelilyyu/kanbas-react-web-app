@@ -13,6 +13,8 @@ import Inbox from "./Inbox";
 import db from "./Database";
 import store from "./store";
 import { Provider } from "react-redux";
+
+
 function Kanbas() {
   
   const [courses, setCourses] = useState([]);

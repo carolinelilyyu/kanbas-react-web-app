@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "subject": "Q1 - HTML",
+    "status": "Closed",
+    "dueDate": "2022-09-21T13:00:00",
+    "points": 29,
+    "questions": 11,
+    "published": false,
+    "availableFrom": null
+  },
+  {
+    "id": 2,
+    "subject": "Q2 - CSS",
+    "status": "Closed",
+    "dueDate": "2022-10-05T13:00:00",
+    "points": 32,
+    "questions": 7,
+    "published": true,
+    "availableFrom": null
+  },
+  {
+    "id": 3,
+    "subject": "Q3 - JS, ES6",
+    "status": "Available Multiple Dates",
+    "dueDate": "Multiple Dates",
+    "points": 38,
+    "questions": 13,
+    "published": true,
+    "availableFrom": null
+  },
+  {
+    "id": 4,
+    "subject": "Q4 - NODE",
+    "status": "Closed",
+    "dueDate": "2022-11-20T15:00:00",
+    "points": 25,
+    "questions": 4,
+    "published": false,
+    "availableFrom": null
+  },
+  {
+    "id": 5,
+    "subject": "Q5 - MONGO",
+    "status": "Not available until Nov 30 at 11:40am",
+    "dueDate": "2022-11-30T13:00:00",
+    "points": 38,
+    "questions": 10,
+    "published": false,
+    "availableFrom": "2022-11-30T11:40:00"
+  }
+]
