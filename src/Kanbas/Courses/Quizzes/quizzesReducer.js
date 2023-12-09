@@ -1,67 +1,56 @@
-// src/Kanbas/Quizzes/quizzesReducer.js
-import db from "../../Database";
+import { createSlice } from "@reduxjs/toolkit";
 
-// Initial state with quizzes from the database
 const initialState = {
-  quizzes: db.quizzes,
+  quizzes: [],
   selectedQuiz: null,
 };
 
-// Action Types
-const ADD_QUIZ = 'quizzes/ADD_QUIZ';
-const DELETE_QUIZ = 'quizzes/DELETE_QUIZ';
-const UPDATE_QUIZ = 'quizzes/UPDATE_QUIZ';
-const SELECT_QUIZ = 'quizzes/SELECT_QUIZ';
+const quizzesSlice = createSlice({
+  name: "quizzes",
+  initialState,
+  reducers: {
+    setQuiz: (state, action) => {
+      state.selectedQuiz = action.payload;
+    },
 
-// Action Creators
-export const addQuiz = (quiz) => ({
-  type: ADD_QUIZ,
-  quiz,
+    setQuizzes: (state, action) => {
+      state.quizzes = action.payload;
+    },
+
+    addQuiz: (state, action) => {
+      const newQuiz = {
+        ...action.payload,
+        id: new Date().getTime().toString(),
+      };
+      state.quizzes = [newQuiz, ...state.quizzes];
+    },
+
+    deleteQuiz: (state, action) => {
+      state.quizzes = state.quizzes.filter((quiz) => quiz.id !== action.payload);
+    },
+
+    updateQuiz: (state, action) => {
+      state.quizzes = state.quizzes.map((quiz) => {
+        return quiz.id === action.payload.id ? action.payload : quiz;
+      });
+    },
+
+    togglePublishStatus: (state, action) => {
+      const quizId = action.payload;
+      state.quizzes = state.quizzes.map((quiz) => {
+        return quiz.id === quizId ? { ...quiz, published: !quiz.published } : quiz;
+      });
+    },
+  },
 });
 
-export const deleteQuiz = (quizId) => ({
-  type: DELETE_QUIZ,
-  quizId,
-});
+export const {
+  addQuiz,
+  deleteQuiz,
+  updateQuiz,
+  setQuiz,
+  setQuizzes,
+  togglePublishStatus,
+} = quizzesSlice.actions;
 
-export const updateQuiz = (quiz) => ({
-  type: UPDATE_QUIZ,
-  quiz,
-});
-
-export const selectQuiz = (quiz) => ({
-  type: SELECT_QUIZ,
-  quiz,
-});
-
-// Reducer
-const quizzesReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_QUIZ:
-      return {
-        ...state,
-        quizzes: [...state.quizzes, action.quiz],
-      };
-    case DELETE_QUIZ:
-      return {
-        ...state,
-        quizzes: state.quizzes.filter((quiz) => quiz.id !== action.quizId),
-      };
-    case UPDATE_QUIZ:
-      return {
-        ...state,
-        quizzes: state.quizzes.map((quiz) =>
-          quiz.id === action.quiz.id ? action.quiz : quiz
-        ),
-      };
-    case SELECT_QUIZ:
-      return {
-        ...state,
-        selectedQuiz: action.quiz,
-      };
-    default:
-      return state;
-  }
-};
-
-export default quizzesReducer;
+export default quizzesSlice.reducer;

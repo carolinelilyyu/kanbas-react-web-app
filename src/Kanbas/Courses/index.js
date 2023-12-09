@@ -55,8 +55,9 @@ function Courses({ courses }){
                 <Route path="Modules" element={<Modules />} />
                 <Route path="Assignments" element={<Assignments />} />
                 <Route path="Quizzes" element={<Quizzes />} />
+                
                 <Route
-                path="Quizzes/:quizId"
+                path="quizzes/:quizId"
                 element={<QuizDisplay />}
                 />
                 <Route

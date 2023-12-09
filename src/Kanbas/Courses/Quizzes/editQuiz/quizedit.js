@@ -1,52 +1,65 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import db from "../../../Database";
-import { FaPlus, FaCode, FaEllipsisVertical, FaBold, FaHighlighter, FaItalic, FaUnderline, FaChevronDown, FaCircleCheck, FaAngleDown, FaTextHeight, FaFont, FaKeyboard, FaMaximize, FaCalendar } from "react-icons/fa6"
-import { AiOutlineCheckCircle } from "react-icons/ai";
+import { FaPlus, FaCode, FaEllipsisVertical, FaBold, FaHighlighter, FaItalic, FaUnderline, FaChevronDown, FaCircleCheck, FaAngleDown, FaTextHeight, FaFont, FaKeyboard, FaMaximize, FaCalendar } from "react-icons/fa6";
 import "./quizedit.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setQuiz } from "../quizzesReducer";
+import * as client from '../client';
 
 function QuizEdit() {
 
-  const { courseId } = useParams();
+  const { courseId, quizId } = useParams();
+  const quiz = useSelector((state) => state.quizzesReducer.selectedQuiz);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log(quizId);
+    client.findQuizById(quizId)
+      .then((q) =>
+        dispatch(setQuiz(q))
+    );
+  }, [quizId]);
 
-  const { qId } = useParams();
-  const quiz = db.quizzes.find(
-    (q) => q._id === qId);
+  const formatDate = (dateString) => {
+    if (dateString === "Multiple Dates") {
+      return "Multiple Dates";
+    }
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+    return date.toLocaleDateString('en-US', options);
+  };
 
-    
 
   return (
     <div className="container-fluid" style={{ "width": "80%" }}>
 
-
       <h2>Quizzes for course {courseId}</h2>
-     
-<div className="py-4">
-<ul className="nav nav-tabs">
-  <li className="nav-item">
-    <a className="nav-link active"
-      href="#">Details</a>
-  </li>
 
-  <li className="nav-item">
-    <a className="nav-link" href="#">Questions</a>
-  </li>
-</ul>
+      <div className="py-4">
+        <ul className="nav nav-tabs">
+          <li className="nav-item">
+            <a className="nav-link active"
+              href="#">Details</a>
+          </li>
+
+          <li className="nav-item">
+            <a className="nav-link" href="#">Questions</a>
+          </li>
+        </ul>
 
 
-</div>
+      </div>
 
       <div className="list-group">
         <div className="wd-flex-grow-1">
-        <div className="d-flex justify-content-between">
-      <input
-        type="text"
-        value={quiz.subject}
-        // onChange={handleInputChange}
-        placeholder="Quiz Name"
-        className="form-control w-25"
-      />
-    </div>
+          <div className="d-flex justify-content-between">
+            <input
+              type="text"
+              value={quiz.title}
+    
+              placeholder="Quiz Name"
+              className="form-control w-25"
+            />
+          </div>
           <hr />
 
         </div>
@@ -106,9 +119,9 @@ function QuizEdit() {
           </td>
 
           <td className="second-col dropdown btn-group">
-                <button type="button" className="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  Graded Quiz
-                </button>
+            <button type="button" className="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Graded Quiz
+            </button>
           </td>
         </tr>
 
@@ -118,27 +131,27 @@ function QuizEdit() {
           </td>
 
           <td className="second-col dropdown btn-group">
-                <button type="button" className="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                 Assignment
-                </button>
+            <button type="button" className="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Assignment
+            </button>
           </td>
         </tr>
 
         <tr>
-        <td>
-          <label className="label-table">Points</label>
-        </td>
-        <td className="second-col">
-          <input
-            type="number"
-            value={quiz.points}
-            // onChange={handlePointsChange}
-            className="form-control"
-          />
-        </td>
-      </tr>
+          <td>
+            <label className="label-table">Points</label>
+          </td>
+          <td className="second-col">
+            <input
+              type="number"
+              value={quiz.points}
+              // onChange={handlePointsChange}
+              className="form-control"
+            />
+          </td>
+        </tr>
 
-        
+
         <tr>
           <td></td>
           <td className="second-col">
@@ -147,13 +160,17 @@ function QuizEdit() {
         </tr>
         <tr>
           <td> </td>
-          <td className="second-col"> <input className="form-check-input" type="checkbox" />
+          <td className="second-col">
+            <input className="form-check-input" type="checkbox" />
             Shuffle Answers</td>
         </tr>
 
         <tr>
-          <td> </td>
-          <td className="second-col"> <input className="form-check-input" type="checkbox" />
+          <td>
+
+          </td>
+          <td className="second-col">
+            <input className="form-check-input" type="checkbox" />
             Time Limit <span></span> <span></span><span></span>
             <input style={{ "width": "100px" }}></input> <label>Minutes</label>
           </td>
@@ -181,28 +198,23 @@ function QuizEdit() {
                   <label><strong>Due</strong></label>
                   <br></br>
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Select date" />
-                    <span class="input-group-text"><FaCalendar /></span>
+                    <input type="Date" class="form-control" value={formatDate(quiz.dueDate)} />
                   </div>
-
-
                 </td>
               </tr>
+
               <tr>
                 <td className="content">
                   <label><strong>Available From</strong></label>
                   <div class="input-group">
-
-                    <input type="text" class="form-control" placeholder="Select date" />
-                    <span class="input-group-text"><FaCalendar /></span>
+                    <input type="Date" class="form-control" value={formatDate(quiz.availableFrom)} />
                   </div>
                 </td>
 
                 <td className="content">
                   <label><strong>Until</strong></label>
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Select date" />
-                    <span class="input-group-text"><FaCalendar /></span>
+                    <input type="Date" class="form-control" value={formatDate(quiz.until)} />
                   </div>
                 </td>
               </tr>
@@ -225,19 +237,28 @@ function QuizEdit() {
       <div>
       </div>
       <div className="col-lg-9 d-flex align-items-center">
-  <input className="form-check" type="checkbox" />
-  <label className="ms-2">Notify Users this quiz has changed</label>
-  <hr className="my-2 mx-3" />
-  <button type="button" className="btn btn-danger ms-auto m-1 p-1">
-    Save
-  </button>
-  <button type="button" className="btn btn-outline-secondary m-1 p-1">
-    Save & Publish
-  </button>
-  <button type="button" className="btn btn-outline-secondary m-1 p-1">
-    Cancel
-  </button>
-</div>
+        <input className="form-check" type="checkbox" />
+        <label className="ms-2">Notify Users this quiz has changed</label>
+        <hr className="my-2 mx-3" />
+        <Link
+          key={quiz.id}
+          to={`/Kanbas/Courses/${courseId}/Quizzes/${quiz.id}`}
+          className="btn btn-danger ms-auto m-1 p-1">
+          Save
+        </Link>
+        <Link
+          key={quiz.id}
+          to={`/Kanbas/Courses/${courseId}/Quizzes/${quiz.id}`}
+          className="btn btn-outline-secondary m-1 p-1">
+          Save & Publish
+        </Link>
+        <Link
+          key={quiz.id}
+          to={`/Kanbas/Courses/${courseId}/Quizzes/${quiz.id}`}
+          className="btn btn-outline-secondary m-1 p-1">
+          Cancel
+        </Link>
+      </div>
 
     </div>
 
