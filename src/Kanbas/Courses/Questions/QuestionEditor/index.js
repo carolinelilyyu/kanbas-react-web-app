@@ -20,7 +20,7 @@ function QuestionEditor() {
     const [currFormat, setCurrFormat] = useState('');
     const [currCorrectAnswer, setCurrCorrectAnswer] = useState('');
     const [currPossibleAnswers, setCurrPossibleAnswers] = useState([]);
-    const [currOptionalText, setOptionalText] = useState();
+    const [currOptionalText, setCurrOptionalText] = useState();
 
     const handlePossibleAnswersChange = (index, value) => {
         const newPossibleAnswers = [...currPossibleAnswers];
@@ -50,6 +50,7 @@ function QuestionEditor() {
             points: currPoints,
             format: currFormat,
             correctAnswer: currCorrectAnswer,
+            optionalText: currOptionalText,
             possibleAnswers: currPossibleAnswers,
           };
         const status = await client.updateQuestion(updatedQuestion);
@@ -71,7 +72,7 @@ function QuestionEditor() {
                 setCurrFormat(q.format);
                 setCurrCorrectAnswer(q.correctAnswer);
                 setCurrPossibleAnswers(q.possibleAnswers);
-                setOptionalText(q.optionalText);
+                setCurrOptionalText(q.optionalText);
                 }
             );
         }   else {
@@ -82,7 +83,7 @@ function QuestionEditor() {
             setCurrFormat('');
             setCurrCorrectAnswer('');
             setCurrPossibleAnswers([]);
-            setOptionalText('');
+            setCurrOptionalText('');
         }
         
     }, [questionId]);
@@ -91,7 +92,7 @@ function QuestionEditor() {
 return (<div>
     {selectedQuestion && (
         <div>
-
+        
             <div>
                 <label>Points:</label>
                 <input type="number" value={currPoints} onChange={(e) => setCurrPoints(e.target.value)} />
@@ -111,9 +112,11 @@ return (<div>
             </div> 
             <hr></hr>
             <h3>Enter your question, then multiple answers, then select the correct answer.</h3>
+            <h1>Question: </h1>
+
+            <input type="text" value={currOptionalText} onChange={(e) => setCurrOptionalText(e.target.value)} />
 
             <div>
-                <h1>Question: </h1>
                 <textarea
                     rows={4}
                     cols={50}
