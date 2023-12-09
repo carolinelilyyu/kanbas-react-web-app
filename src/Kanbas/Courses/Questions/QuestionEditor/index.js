@@ -14,7 +14,7 @@ function QuestionEditor() {
     const dispatch = useDispatch();
     const { courseId, questionId } = useParams();
     const selectedQuestion = useSelector((state) => state.questionsReducer.selectedQuestion);
-    const [currQuestion, setCurrQuestion] = useState('');
+    const [currTitle, setCurrTitle] = useState('');
     const [currPoints, setCurrPoints] = useState(0);
     const [currFormat, setCurrFormat] = useState('');
     const [currAnswer, setCurrAnswer] = useState([]);
@@ -30,8 +30,16 @@ function QuestionEditor() {
     };
         
     const handleUpdateQuestion = async () => {
-        const status = await client.updateQuestion(currQuestion);
-        dispatch(updateQuestion(currQuestion));
+        const updatedQuestion = {
+            _id: questionId,
+            title: currTitle,
+            points: currPoints,
+            format: currFormat,
+            answer: currAnswer,
+          };
+        const status = await client.updateQuestion(updatedQuestion);
+        console.log(status);
+        dispatch(updateQuestion(updatedQuestion));
         navigate(`/Kanbas/Courses/${courseId}/Assignments`);
     };
 
@@ -43,7 +51,7 @@ function QuestionEditor() {
             .then((q) => {
                 dispatch(setQuestion(q));
                 setCurrPoints(q.points);
-                setCurrQuestion(q.question);
+                setCurrTitle(q.title);
                 setCurrFormat(q.format);
                 setCurrAnswer(q.answer);
                 }
@@ -51,7 +59,7 @@ function QuestionEditor() {
         }   else {
             // Set default values for a new question
             setCurrPoints(0);
-            setCurrQuestion('');
+            setCurrTitle('');
             setCurrFormat('');
             setCurrAnswer(['']);
         }
@@ -68,7 +76,7 @@ return (<div>
 
             <div>
                 <label>Edit Question: </label>
-                <input type="text" value={currQuestion} onChange={(e) => (setCurrQuestion(e.target.value))} />
+                <input type="text" value={currTitle} onChange={(e) => (setCurrTitle(e.target.value))} />
             </div>
 
             <div>

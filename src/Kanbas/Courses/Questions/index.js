@@ -51,7 +51,7 @@ function QuestionsList() {
   return (
     <div>
       <h1>Questions for Quiz {quizId}</h1>
-      <input value={question.question}
+      <input value={question.title}
         onChange={(e)=> (setQuestion({ ...question, question: e.target.value }))
         }
         />
@@ -71,7 +71,7 @@ function QuestionsList() {
           <li key={question._id}>
              <li class="list-group-item d-flex justify-content-between align-items-center">
              <Link to={`/Kanbas/Courses/${courseId}/Questions/${question._id}/Edit`}>
-              {question.question}
+              {question.title}
             </Link>
             <div>
             <button
