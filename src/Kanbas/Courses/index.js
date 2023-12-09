@@ -8,6 +8,8 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
+import Questions from "./Questions";
+import QuestionEditor from "./Questions/QuestionEditor";
 import {RxHamburgerMenu} from "react-icons/rx"
 import Quizzes from "./Quizzes";
 import QuizDisplay from "./Quizzes/quizDisplay";
@@ -69,7 +71,17 @@ function Courses({ courses }){
                 path="Assignments/:assignmentId"
                 element={<AssignmentEditor />}
                 />
+                <Route
+                path="Questions/:questionId"
+                element={<Questions />}
+                />
+                <Route
+                path="Questions/:questionId/Edit"
+                element={<QuestionEditor />}
+                />
+                
                 <Route path="Grades" element={<Grades />} />
+                <Route path="Questions" element={<Questions />} />
             </Routes>
             </div>
         </div>
