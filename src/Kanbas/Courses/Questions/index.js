@@ -17,9 +17,11 @@ function QuestionsList() {
   const quizId = "75510e70870c092d5441bc94";
   const [questions, setQuestions] = useState([]);
   const [question, setQuestion] = useState([]);
-  const [answers, setAnswers] = useState([]);
+  const [format, setFormat] = useState();
+  const [answer, setAnswer] = useState();
 
   const handleAddModule = () => {
+    console.log(question);
     client.addQuestion(quizId, question).then((question) => {
         console.log(question);
         //should be dispatch(addQuestion(question))
@@ -30,6 +32,7 @@ function QuestionsList() {
     const handleDeleteModule = (questionId) => {
         console.log("delete question inside questionlist");
         client.deleteQuestion(questionId).then((status) => {
+            //needs to have dispatch
           (deleteQuestion(questionId));
         });
       };
@@ -48,7 +51,8 @@ function QuestionsList() {
         />
         <br/>
         <textarea value={question.answer}
-        onChange={(e) =>(setAnswers({ ...question, answer: e.target.value }))                            
+        //needs to have dispatch (look at module)
+        onChange={(e) => (setAnswer({ ...question, answer: e.target.value }))                            
         }
         />
         <br></br>
