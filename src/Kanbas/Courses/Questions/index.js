@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { 
     addQuestion,
     deleteQuestion,
+    setQuestionList,
  } from './questionsReducer';
 import {AiOutlineCheckCircle} from "react-icons/ai";
 import {FaEllipsisVertical} from "react-icons/fa6";
@@ -25,7 +26,7 @@ function QuestionsList() {
     client.addQuestion(quizId, question).then((question) => {
         console.log(question);
         //should be dispatch(addQuestion(question))
-        (addQuestion(question));
+        dispatch(addQuestion(question));
         });
     };
 
@@ -33,13 +34,18 @@ function QuestionsList() {
         console.log("delete question inside questionlist");
         client.deleteQuestion(questionId).then((status) => {
             //needs to have dispatch
-          (deleteQuestion(questionId));
+          dispatch(deleteQuestion(questionId));
         });
       };
 
+      //useeffect to real time, is a hook, perform side effects, whenever update data or variable/ component, reload entire screen
   useEffect(() => {
     client.findQuestionsForQuiz(quizId)
-      .then((questions) => setQuestions(questions));
+      .then((questions) => {
+        dispatch(setQuestionList(questions));
+            setQuestions(questions);
+        });
+       
   }, [quizId]);
 
   return (
