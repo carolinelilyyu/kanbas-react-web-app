@@ -28,6 +28,12 @@ function QuestionEditor() {
     const handleAddAnswer = () => {
         setCurrAnswer([...currAnswer, '']);
     };
+    
+    const handleDeleteAnswer = (index) => {
+        const newAnswers = [...currAnswer];
+        newAnswers.splice(index, 1);
+        setCurrAnswer(newAnswers);
+      };
         
     const handleUpdateQuestion = async () => {
         const updatedQuestion = {
@@ -106,6 +112,7 @@ return (<div>
                     value={answer}
                     onChange={(e) => handleAnswerChange(index, e.target.value)}
                     />
+                    <button onClick={() => handleDeleteAnswer(index)}>Delete</button>
                 </div>
                 ))}
                 <button onClick={handleAddAnswer}>+ Add Answer</button>
