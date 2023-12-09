@@ -1,31 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector, useDispatch } from "react-redux";
-import {
-    addQuestion,
-    deleteQuestion, 
-    setModule,
-    setModules,
-  } from "./questionsReducer";
 import * as client from "./client";
 
-const QuestionsList = () => {
-    const { courseId } = useParams();
-
-//   const { quizId } = useParams();
-    const quizId = "75510e70870c092d5441bc94";
+function QuestionsList() {
+  const { courseId } = useParams();
+  const quizId = "75510e70870c092d5441bc94";
   const [questions, setQuestions] = useState([]);
 
-
   useEffect(() => {
-    console.log(quizId);
     client.findQuestionsForQuiz(quizId)
-      .then((questions) =>
-        (setQuestions(questions))
-    );
+      .then((questions) => setQuestions(questions));
   }, [quizId]);
-//   const dispatch = useDispatch();
 
   return (
     <div>
@@ -36,7 +22,9 @@ const QuestionsList = () => {
       <ul>
         {questions.map(question => (
           <li key={question._id}>
-            {question.question} {/* Display other details as needed */}
+            <Link to={`/Kanbas/Courses/${courseId}/Questions/${question._id}/Edit`}>
+              {question.question}
+            </Link>
           </li>
         ))}
       </ul>

@@ -1,21 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import * as client from "../client";
 import { useSelector, useDispatch } from "react-redux";
 import {
     updateQuestion,
+    getQuestion,
   } from "../questionsReducer";
 
-const QuestionEditor = () => {
+function QuestionEditor() {
     const dispatch = useDispatch();
     const { courseId } = useParams();
+    const {questionId} = useParams();
     const [title, setTitle] = useState('');
     const [points, setPoints] = useState(0);
     const [format, setFormat] = useState('');
     const [answers, setAnswers] = useState(['']); // Initial answer
     const [question, setQuestion] = useState(['']); // Initial answer
 
+    useEffect(() => {
+        console.log(questionId);
+      client.getQuestion(questionId)
+        .then((question) => {
+            setQuestion(question);
+            setPoints(question.points);
+            }
+        );
+    }, [questionId]);
+  
     const handleUpdateQuestion = async () => {
         const status = await client.updateQuestion(module);
         dispatch(updateQuestion(module));
@@ -36,44 +48,6 @@ const QuestionEditor = () => {
         alert("let's go back");
         // history.goBack();
     };
-
-//   const handleUpdateQuestion = () => {
-//     const data = {
-//       title,
-//       points,
-//       format,
-//       answers,
-//     };
-
-//     updateQuestion();
-//   const updateQuestion = async (question) => {
-//     const response = await axios.put(
-//       `${URL}/${question._id}`,
-//       question
-//     );
-//     setQuestion(
-//       question.map((q) => {
-//         if (q._id === question._id) {
-//           return question;
-//         }
-//         return q;
-//       })
-//     );
-//     setQuestion({ name: "" });
-//   };
-
-    // // Assuming you have an API endpoint for updating questions
-    // axios.post('/api/questions/', data)
-    //   .then(response => {
-    //     // Handle success, e.g., show a success message
-    //     console.log(response.data);
-    //   })
-    //   .catch(error => {
-    //     // Handle error, e.g., show an error message
-    //     console.error(error);
-    //   });
-//   };
-
 
   return (
     <div>

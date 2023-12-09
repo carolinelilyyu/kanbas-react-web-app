@@ -19,6 +19,14 @@ export const deleteQuestion = async (questionId) => {
   return response.data;
 };
 
+
+export const getQuestion = async (questionId) => {
+    console.log("Delete module client");
+    const response = await axios
+      .get(`${QUESTIONS_URL}/${questionId}`);
+    return response.data;
+  };
+
 export const createQuestion = async (quizId, question) => {
   const response = await axios.post(
     `${QUIZZES_URL}/${quizId}/questions`,
@@ -27,26 +35,11 @@ export const createQuestion = async (quizId, question) => {
   return response.data;
 };
 
-// export const findQuestionsForQuiz = async (quizId) => {
-//   console.log(quizId);
-//   const response = await axios
-//     .get(`${QUIZZES_URL}/${quizId}/questions`);
-//   console.log(response.data);
-//   return response.data;
-// };
+export const findQuestionsForQuiz = async (quizId) => {
+  console.log(quizId);
+  const response = await axios
+    .get(`${QUIZZES_URL}/${quizId}/questions`);
+  console.log(response.data);
+  return response.data;
+};
 
-export const findQuestionsForQuiz = (quizId) => {
-    return new Promise((resolve, reject) => {
-      console.log(quizId);
-      axios
-        .get(`${QUIZZES_URL}/${quizId}/questions`)
-        .then((response) => {
-          console.log(response.data);
-          resolve(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-          reject(error);
-        });
-    });
-  };
