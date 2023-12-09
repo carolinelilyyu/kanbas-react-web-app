@@ -21,7 +21,7 @@ export const deleteQuestion = async (questionId) => {
 
 
 export const getQuestion = async (questionId) => {
-    console.log("Delete module client");
+    console.log("Get  client");
     const response = await axios
       .get(`${QUESTIONS_URL}/${questionId}`);
     return response.data;

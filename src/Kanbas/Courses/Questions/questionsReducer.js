@@ -37,7 +37,7 @@ const questionsSlice = createSlice({
     selectQuestion: (state, action) => {
       state.selectedQuestion = action.payload;
     },
-    getQuestion: (state, action) => {
+    setQuestion: (state, action) => {
       state.selectedQuestion = action.payload;
     },
   },
@@ -47,7 +47,6 @@ export const {
   addQuestion,
   deleteQuestion,
   updateQuestion,
-  getQuestion,
   setQuestion,
   setQuestionList,
 } = questionsSlice.actions;
