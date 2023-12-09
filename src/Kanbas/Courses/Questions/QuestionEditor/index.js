@@ -15,33 +15,42 @@ function QuestionEditor() {
     const { courseId, questionId } = useParams();
     const selectedQuestion = useSelector((state) => state.questionsReducer.selectedQuestion);
     const [currTitle, setCurrTitle] = useState('');
+    const [currInnerQuestion, setInnerQuestion] = useState('');
     const [currPoints, setCurrPoints] = useState(0);
     const [currFormat, setCurrFormat] = useState('');
-    const [currAnswer, setCurrAnswer] = useState([]);
+    const [currCorrectAnswer, setCurrCorrectAnswer] = useState('');
+    const [currPossibleAnswers, setCurrPossibleAnswers] = useState([]);
+    const [currOptionalText, setOptionalText] = useState();
 
-    const handleAnswerChange = (index, value) => {
-        const newAnswers = [...currAnswer];
-        newAnswers[index] = value;
-        setCurrAnswer(newAnswers);
+    const handlePossibleAnswersChange = (index, value) => {
+        const newPossibleAnswers = [...currPossibleAnswers];
+        newPossibleAnswers[index] = value;
+        setCurrPossibleAnswers(newPossibleAnswers);
     };
 
-    const handleAddAnswer = () => {
-        setCurrAnswer([...currAnswer, '']);
+    const handleCorrectAnswerChange = (value) => {
+        setCurrCorrectAnswer(value);
     };
-    
-    const handleDeleteAnswer = (index) => {
-        const newAnswers = [...currAnswer];
+
+    const handleAddPossibleAnswer = () => {
+        setCurrPossibleAnswers([...currPossibleAnswers, '']);
+    };
+
+    const handleDeletePossibleAnswer = (index) => {
+        const newAnswers = [...currPossibleAnswers];
         newAnswers.splice(index, 1);
-        setCurrAnswer(newAnswers);
+        setCurrPossibleAnswers(newAnswers);
       };
         
     const handleUpdateQuestion = async () => {
         const updatedQuestion = {
             _id: questionId,
             title: currTitle,
+            question: currInnerQuestion,
             points: currPoints,
             format: currFormat,
-            answer: currAnswer,
+            correctAnswer: currCorrectAnswer,
+            possibleAnswers: currPossibleAnswers,
           };
         const status = await client.updateQuestion(updatedQuestion);
         console.log(status);
@@ -58,16 +67,22 @@ function QuestionEditor() {
                 dispatch(setQuestion(q));
                 setCurrPoints(q.points);
                 setCurrTitle(q.title);
+                setInnerQuestion(q.question);
                 setCurrFormat(q.format);
-                setCurrAnswer(q.answer);
+                setCurrCorrectAnswer(q.correctAnswer);
+                setCurrPossibleAnswers(q.possibleAnswers);
+                setOptionalText(q.optionalText);
                 }
             );
         }   else {
             // Set default values for a new question
             setCurrPoints(0);
             setCurrTitle('');
+            setInnerQuestion('');
             setCurrFormat('');
-            setCurrAnswer(['']);
+            setCurrCorrectAnswer('');
+            setCurrPossibleAnswers([]);
+            setOptionalText('');
         }
         
     }, [questionId]);
@@ -76,20 +91,14 @@ function QuestionEditor() {
 return (<div>
     {selectedQuestion && (
         <div>
-            <h1>Question</h1>
-            <p>Enter your question, then multiple answers, then select the correct answer.</p>
-
 
             <div>
-                <label>Edit Question: </label>
-                <input type="text" value={currTitle} onChange={(e) => (setCurrTitle(e.target.value))} />
-            </div>
-
-            <div>
-                <label>Edit Points:</label>
+                <label>Points:</label>
                 <input type="number" value={currPoints} onChange={(e) => setCurrPoints(e.target.value)} />
             </div>
 
+            <input type="text" value={currTitle} onChange={(e) => setCurrTitle(e.target.value)} />
+            
             <div>
                 <label>Format:</label>
                 <select value={currFormat} onChange={(e) => setCurrFormat(e.target.value)}>
@@ -100,31 +109,49 @@ return (<div>
                     ))}
                 </select>
             </div> 
+            <hr></hr>
+            <h3>Enter your question, then multiple answers, then select the correct answer.</h3>
+
+            <div>
+                <h1>Question: </h1>
+                <textarea
+                    rows={4}
+                    cols={50}
+                    value={currInnerQuestion} 
+                    onChange={(e) => (setInnerQuestion(e.target.value))} />
+            </div>
+
+
 
 
             <div>
                 <h2>Answers</h2>
-                {currAnswer.map((answer, index) => (
-                <div key={index}>
-                    <label>{`Answer ${index + 1}:`}</label>
+                <label>{`Correct answer`}</label>
                     <input
-                    type="text"
-                    value={answer}
-                    onChange={(e) => handleAnswerChange(index, e.target.value)}
+                        type="text"
+                        value={currCorrectAnswer}
+                        onChange={(e) => handleCorrectAnswerChange(e.target.value)}
                     />
-                    <button onClick={() => handleDeleteAnswer(index)}>Delete</button>
+                {currPossibleAnswers.map((answer, index) => (
+                <div key={index}>
+                    <label>{`Possible answer`}</label>
+                    <input
+                        type="text"
+                        value={answer}
+                        onChange={(e) => handlePossibleAnswersChange(index, e.target.value)}
+                    />
+                    <button onClick={() => handleDeletePossibleAnswer(index)}>Delete</button>
                 </div>
                 ))}
-                <button onClick={handleAddAnswer}>+ Add Answer</button>
+                <button onClick={handleAddPossibleAnswer}>+ Add Answer</button>
             </div> 
 
             <div>
-            <Link to={`/Kanbas/Courses/${courseId}/Assignments`}
+                <Link to={`/Kanbas/Courses/${courseId}/Assignments`}
                     className="btn btn-light">
-                Cancel
+                    Cancel
                 </Link>
-                {/* <button onClick={handleCancel}>Cancel</button> */}
-                <button onClick={handleUpdateQuestion}>Update Question</button>
+                <button className="btn btn-danger" onClick={handleUpdateQuestion}>Update Question</button>
             </div>
 
         </div>
