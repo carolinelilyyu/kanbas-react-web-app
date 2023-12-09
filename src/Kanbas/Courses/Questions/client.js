@@ -27,10 +27,10 @@ export const getQuestion = async (questionId) => {
     return response.data;
   };
 
-export const createQuestion = async (quizId, question) => {
+export const addQuestion = async (quizId, question) => {
   const response = await axios.post(
     `${QUIZZES_URL}/${quizId}/questions`,
-    module
+    question
   );
   return response.data;
 };

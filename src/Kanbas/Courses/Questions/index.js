@@ -2,11 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import * as client from "./client";
+import { useSelector, useDispatch } from "react-redux";
+import { 
+    addQuestion,
+    deleteQuestion,
+ } from './questionsReducer';
+import {AiOutlineCheckCircle} from "react-icons/ai";
+import {FaEllipsisVertical} from "react-icons/fa6";
 
 function QuestionsList() {
+    const dispatch = useDispatch();
+
   const { courseId } = useParams();
   const quizId = "75510e70870c092d5441bc94";
   const [questions, setQuestions] = useState([]);
+  const [question, setQuestion] = useState([]);
+  const [answers, setAnswers] = useState([]);
+
+  const handleAddModule = () => {
+    client.addQuestion(quizId, question).then((question) => {
+        console.log(question);
+        //should be dispatch(addQuestion(question))
+        (addQuestion(question));
+        });
+    };
+
+    const handleDeleteModule = (questionId) => {
+        console.log("delete question inside questionlist");
+        client.deleteQuestion(questionId).then((status) => {
+          (deleteQuestion(questionId));
+        });
+      };
 
   useEffect(() => {
     client.findQuestionsForQuiz(quizId)
@@ -16,15 +42,43 @@ function QuestionsList() {
   return (
     <div>
       <h1>Questions for Quiz {quizId}</h1>
-      <Link to={`/Kanbas/Courses/${courseId}/Questions/${quizId}/Edit`}>
-        <button>Edit Question</button>
-      </Link>
+      <input value={question.question}
+        onChange={(e)=> (setQuestion({ ...question, question: e.target.value }))
+        }
+        />
+        <br/>
+        <textarea value={question.answer}
+        onChange={(e) =>(setAnswers({ ...question, answer: e.target.value }))                            
+        }
+        />
+        <br></br>
+        <button type="button" class="btn btn-danger" 
+            onClick={handleAddModule}>
+            Add
+        </button>
       <ul>
         {questions.map(question => (
           <li key={question._id}>
-            <Link to={`/Kanbas/Courses/${courseId}/Questions/${question._id}/Edit`}>
+             <li class="list-group-item d-flex justify-content-between align-items-center">
+             <Link to={`/Kanbas/Courses/${courseId}/Questions/${question._id}/Edit`}>
               {question.question}
             </Link>
+            <div>
+            <button
+            type="button" class="btn btn-light"
+            onClick={() => (setQuestion(question))}>
+            Edit
+            </button>
+
+            <button
+                type="button" class="btn btn-danger"                                 
+            //  onClick={() => dispatch(deleteModule(module._id))}>
+                onClick={() => handleDeleteModule(question._id)}>
+                Delete
+            </button>
+            </div>
+        </li>
+            
           </li>
         ))}
       </ul>
