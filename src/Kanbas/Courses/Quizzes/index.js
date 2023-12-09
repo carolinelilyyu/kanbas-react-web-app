@@ -4,7 +4,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { BiSolidPlaneAlt } from "react-icons/bi";
 import { FaEllipsisVertical } from "react-icons/fa6";
 import { useDispatch, useSelector } from 'react-redux';
-import { addQuiz, deleteQuiz, updateQuiz, selectQuiz, setQuizzes,togglePublishStatus } from "./quizzesReducer";
+import { addQuiz, deleteQuiz, updateQuiz, selectQuiz, setQuizzes, togglePublishStatus } from "./quizzesReducer";
 import * as client from "./client";
 
 function Quizzes() {
@@ -58,7 +58,8 @@ function Quizzes() {
       return "Multiple Dates";
     }
     const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+    const options = { year: 'numeric', month: 'short',
+     day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
     return date.toLocaleDateString('en-US', options);
   };
 
@@ -150,7 +151,7 @@ function Quizzes() {
                     <button onClick={() => handleDeleteQuiz(quiz._id)}>
                       Delete
                     </button>
-                    <button onClick={()=>handlePublish(quiz._id)}>
+                    <button onClick={() => handlePublish(quiz._id)}>
                       {quiz.published ? "Unpublish" : "Publish"}
                     </button>
                   </div>

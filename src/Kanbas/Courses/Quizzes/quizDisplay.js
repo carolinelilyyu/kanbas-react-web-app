@@ -4,11 +4,13 @@ import { FaEllipsisVertical } from "react-icons/fa6";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as client from "./client";
-import { setQuiz } from "./quizzesReducer";
+import { setQuiz, togglePublishStatus } from "./quizzesReducer";
 
 function QuizDisplay() {
   const { courseId, quizId } = useParams();
+
   const selectedQuiz = useSelector((state) => state.quizzesReducer.selectedQuiz);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,8 +18,20 @@ function QuizDisplay() {
     client.findQuizById(quizId)
       .then((q) =>
         dispatch(setQuiz(q))
-    );
+      );
   }, [quizId]);
+  console.log(selectedQuiz)
+
+  const handlePublish = (quizId) => {
+    console.log("Changing publish status");
+    client.publishQuiz(quizId).then((status) => {
+      dispatch(togglePublishStatus(quizId));
+      client.findQuizById(quizId)
+        .then((q) => dispatch(setQuiz(q)))
+        .catch((error) => console.error("Error fetching quizzes:", error));
+    });
+  };
+
 
 
   return (<div>
@@ -29,17 +43,25 @@ function QuizDisplay() {
 
           <div className="d-flex">
 
-            <button type="button" className="btn btn-light mx-2 green-button" style={{ backgroundColor: 'green', color: "white" }}>
-              {selectedQuiz.published == true ? "Published" : "UnPublished"}
-            </button>
-
-            <button type="button" className="btn btn-light mx-2">
-              Preview
+            <button
+              type="button"
+              className="btn btn-light mx-2 green-button"
+              style={{ backgroundColor: 'green', color: "white" }}
+              onClick={() => handlePublish(selectedQuiz._id)}
+            >
+              {selectedQuiz.published === true ? "Published" : "Unpublished"}
             </button>
 
             <Link
               key={selectedQuiz.id}
-              to={`/Kanbas/Courses/${courseId}/Quizzes/${selectedQuiz.id}/edit`}
+              to={`/Kanbas/Courses/${courseId}/Quizzes/${selectedQuiz._id}/preview`}
+              className="btn btn-light"
+            >
+              Preview</Link>
+
+            <Link
+              key={selectedQuiz.id}
+              to={`/Kanbas/Courses/${courseId}/Quizzes/${selectedQuiz._id}/edit`}
               className="btn btn-light"
             >
               Edit</Link>
@@ -62,7 +84,7 @@ function QuizDisplay() {
             <tbody>
               <tr>
                 <td className="left-table-item">Quiz Type</td>
-                <td className="right-table-item">{selectedQuiz.subject}</td>
+                <td className="right-table-item">{selectedQuiz.title}</td>
               </tr>
               <tr>
                 <td className="left-table-item">Points</td>
@@ -72,6 +94,11 @@ function QuizDisplay() {
               <tr>
                 <td className="left-table-item">selectedQuiz Group</td>
                 <td className="right-table-item">No</td>
+              </tr>
+
+              <tr>
+                <td className="left-table-item">Shuffle Answers</td>
+                <td className="right-table-item">{selectedQuiz.shuffleAnswer ? 'Yes' : 'No'}</td>
               </tr>
               <tr>
                 <td className="left-table-item">Time Limit</td>
@@ -107,6 +134,10 @@ function QuizDisplay() {
                 <td className="left-table-item"> Lock Questions After Answering</td>
                 <td className="right-table-item">No</td>
               </tr>
+              <tr>
+                <td className="left-table-item"> Is Quiz Published</td>
+                <td className="right-table-item">{selectedQuiz.published ? 'Yes' : 'No'}</td>
+              </tr>
 
 
             </tbody>
@@ -130,8 +161,8 @@ function QuizDisplay() {
               <tr>
                 <td>{selectedQuiz.dueDate}</td>
                 <td>Everyone</td>
-                <td>{selectedQuiz.availableFrom}</td>
-                <td>{selectedQuiz.dueDate}</td>
+                <td>{selectedQuiz.availableDate}</td>
+                <td>{selectedQuiz.until}</td>
               </tr>
             </tbody>
           </table>

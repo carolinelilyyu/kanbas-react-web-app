@@ -29,9 +29,13 @@ const quizzesSlice = createSlice({
       state.quizzes = state.quizzes.filter((quiz) => quiz.id !== action.payload);
     },
 
-    updateQuiz: (state, action) => {
-      state.quizzes = state.quizzes.map((quiz) => {
-        return quiz.id === action.payload.id ? action.payload : quiz;
+    updateQuestion: (state, action) => {
+      state.quizzes = state.quizzes.map((q) => {
+        if (q._id === action.payload._id) {
+          return action.payload;
+        } else {
+          return q;
+        }
       });
     },
 

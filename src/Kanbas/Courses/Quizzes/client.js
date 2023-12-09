@@ -31,3 +31,8 @@ export const publishQuiz = async (quizId) => {
   return response.data;
 };
 
+export const updateQuiz = async (quizId,quiz) => {
+  console.log(quiz);
+  const response = await axios.put(`${MAIN_URL}/quizzes/${quizId}`, quiz);
+  return response.data;
+};
