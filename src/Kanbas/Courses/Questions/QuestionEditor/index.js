@@ -24,6 +24,9 @@ function QuestionEditor() {
         .then((question) => {
             setQuestion(question);
             setPoints(question.points);
+            setTitle(question.question);
+            setFormat(question.format);
+            setAnswers(question.answer);
             }
         );
     }, [questionId]);
