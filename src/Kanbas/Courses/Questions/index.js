@@ -9,7 +9,7 @@ import {
     setQuestionList,
     setQuestion,
  } from './questionsReducer';
-
+ 
 function QuestionsList() {
     const dispatch = useDispatch();
 
@@ -17,26 +17,28 @@ function QuestionsList() {
   const quizId = "75510e70870c092d5441bc94";
   const [questions, setQuestions] = useState([]);
 
-  const handleAddQestion = () => {
-    const newQuestion = {
-      title: 'New Question',
-      format: 'Multiple Choice',
-      possibleAnswers: [],
-    };
-  
-    client.addQuestion(quizId, newQuestion).then((newQuestion) => {
-      dispatch(addQuestion(newQuestion));
-      setQuestions([...questions, newQuestion]); // Prepend the new question to the list
-    });
+
+const handleAddQuestion = () => {
+  const newQuestion = {
+    title: 'New Question',
+    format: 'Multiple Choice',
+    possibleAnswers: [],
+  };
+
+  client.addQuestion(quizId, newQuestion).then((newQuestion) => {
+    dispatch(addQuestion(newQuestion));
+    setQuestions([...questions, newQuestion]); // Prepend the new question to the list
+  });
+  };
+
+  const handleDeleteQuestion = (questionId) => {
+      client.deleteQuestion(questionId).then((status) => {
+        dispatch(deleteQuestion(questionId));
+        setQuestions(questions.filter(question => question._id !== questionId));
+      });
     };
 
-    const handleDeleteQuestion = (questionId) => {
-        client.deleteQuestion(questionId).then((status) => {
-          dispatch(deleteQuestion(questionId));
-        });
-      };
 
-      //useeffect to real time, is a hook, perform side effects, whenever update data or variable/ component, reload entire screen
   useEffect(() => {
     client.findQuestionsForQuiz(quizId)
       .then((questions) => {
@@ -44,13 +46,13 @@ function QuestionsList() {
             setQuestions(questions);
         });
        
-  }, [quizId]);
+  }, [quizId, dispatch]);
 
   return (
     <div>
       <h1>Questions for Quiz {quizId}</h1>
         <button type="button" class="btn btn-danger" 
-            onClick={handleAddQestion}>
+            onClick={handleAddQuestion}>
             Add
         </button>
       <ul>
