@@ -18,6 +18,8 @@ function QuestionsList() {
   const [questions, setQuestions] = useState([]);
 
   const handleAddQuestion = async () => {
+    //change to have questions saved into the state, do not add to redux yet
+    //until hit is clicked
     const newQuestion = {
       title: 'New Question',
       format: 'Multiple Choice',
@@ -49,9 +51,9 @@ function QuestionsList() {
   return (
     <div>
       <h1>Questions for Quiz {quizId}</h1>
-        <button type="button" class="btn btn-danger" 
+        <button type="button" class="btn btn-light" 
             onClick={handleAddQuestion}>
-            Add
+            + New Question
         </button>
       <ul>
         {questions.map(question => (
@@ -61,12 +63,6 @@ function QuestionsList() {
               {question.title}
             </Link>
             <div>
-            <button
-            type="button" class="btn btn-light"
-            onClick={() => dispatch(setQuestion(question))}>
-            Edit
-            </button>
-
             <button
                 type="button" class="btn btn-danger"                                 
                 onClick={() => handleDeleteQuestion(question._id)}>
