@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from 'react-router-dom';
 import * as client from "../../Questions/client"; import { useDispatch, useSelector } from "react-redux";
 import { setQuestionList } from "../../Questions/questionsReducer";
 
 function QuizPreview() {
 
-  const { quizId } = useParams();
+  const { courseId, quizId } = useParams();
 
   const questions = useSelector((state) => state.questionsReducer.questions);
   const dispatch = useDispatch();

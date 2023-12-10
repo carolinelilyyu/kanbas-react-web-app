@@ -13,7 +13,7 @@ function QuestionEditor() {
     const formatOptions = ["Multiple Choice", "Fill In The Blank", "True/False"];
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { courseId, questionId } = useParams();
+    const { courseId, quizId, questionId } = useParams();
     const selectedQuestion = useSelector((state) => state.questionsReducer.selectedQuestion);
     const [currTitle, setCurrTitle] = useState('');
     const [currInnerQuestion, setInnerQuestion] = useState('');
@@ -63,7 +63,7 @@ function QuestionEditor() {
         const status = await client.updateQuestion(updatedQuestion);
         console.log(status);
         dispatch(updateQuestion(updatedQuestion));
-        navigate(`/Kanbas/Courses/${courseId}/Quizzes/`);
+        navigate(`/Kanbas/Courses/${courseId}/Quizzes/${quizId}`);
     };
     
 useEffect(() => {
@@ -289,7 +289,7 @@ useEffect(() => {
                     )}
 
                     <div>
-                        <Link to={`/Kanbas/Courses/${courseId}/Quizzes`}
+                        <Link to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}`}
                             className="btn btn-light">
                             Cancel
                         </Link>
