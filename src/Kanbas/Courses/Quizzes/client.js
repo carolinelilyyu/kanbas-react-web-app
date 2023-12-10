@@ -1,5 +1,5 @@
 import axios from "axios";
-const MAIN_URL = "http://localhost:4000/api";
+const MAIN_URL = "https://kanbas-final-project.onrender.com/api";
 
 
 export const findAllQuizzesByCourse = async (courseId) => {

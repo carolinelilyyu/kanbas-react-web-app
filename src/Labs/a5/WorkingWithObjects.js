@@ -11,7 +11,7 @@ function WorkingWithObjects() {
         score: 0,
       });
     // const URL = "https://kanbas-node-server-app-2-x5nj.onrender.com/a5/assignment"
-    const URL = "http://localhost:4000/a5/assignment"
+    const URL = "https://kanbas-final-project.onrender.com/a5/assignment"
 
     const fetchAssignment = async () => {
         const response = await axios.get(`${URL}`);
@@ -80,7 +80,7 @@ function WorkingWithObjects() {
         
       <h4>Retrieving Objects</h4>
       {/* <a href="https://kanbas-node-server-app-2-x5nj.onrender.com/a5/assignment" */}
-      <a href="http://localhost:4000/a5/assignment"
+      <a href="https://kanbas-final-project.onrender.com/a5/assignment"
          className="btn btn-primary me-2">
         Get Assignment
       </a>
@@ -88,7 +88,7 @@ function WorkingWithObjects() {
       <h4>Retrieving Properties</h4>
       <a
         // href="https://kanbas-node-server-app-2-x5nj.onrender.com/a5/assignment/title"
-        href="http://localhost:4000/a5/assignment/title"
+        href="https://kanbas-final-project.onrender.com/a5/assignment/title"
         className="btn btn-primary me-2">
         Get Title
       </a>

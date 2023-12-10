@@ -1,10 +1,10 @@
 import axios from "axios";
 // const MODULES_URL = "https://kanbas-node-server-app-2-x5nj.onrender.com/api/modules";
-const QUESTIONS_URL = "http://localhost:4000/api/questions";
+const QUESTIONS_URL = "https://kanbas-final-project.onrender.com/api/questions";
 
 
 // const COURSES_URL = "https://kanbas-node-server-app-2-x5nj.onrender.com/api/courses";
-const QUIZZES_URL = "http://localhost:4000/api/quizzes";
+const QUIZZES_URL = "https://kanbas-final-project.onrender.com/api/quizzes";
 
 export const updateQuestion = async (question) => {
   const response = await axios.

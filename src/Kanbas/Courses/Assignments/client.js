@@ -1,6 +1,6 @@
 // import axios from "axios";
-// const ASSIGNMENTS_URL = "http://localhost:4000/api/assignments";
-// const COURSES_URL = "http://localhost:4000/api/courses";
+// const ASSIGNMENTS_URL = "https://kanbas-final-project.onrender.com/api/assignments";
+// const COURSES_URL = "https://kanbas-final-project.onrender.com/api/courses";
 
 // export const updateAssignment = async (assignment) => {
 //   const response = await axios.

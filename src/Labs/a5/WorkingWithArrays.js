@@ -6,7 +6,7 @@ function WorkingWithArrays() {
     const [id, setId] = useState(1);
     const [title, setTitle] = useState("Go to work");
     // const API = "https://kanbas-node-server-app-2-x5nj.onrender.com/a5/todos";
-    const API = "http://localhost:4000/a5/todos";
+    const API = "https://kanbas-final-project.onrender.com/a5/todos";
     const [todo, setTodo] = useState({
         id: 1,
         title: "NodeJS Assignment",
@@ -15,7 +15,7 @@ function WorkingWithArrays() {
         completed: false,
       });
     // const fetchTodos = () => {
-    //     const promise = axios.get("http://localhost:4000/a5/todos");
+    //     const promise = axios.get("https://kanbas-final-project.onrender.com/a5/todos");
     //     promise.then((response) => {
     //         console.log(response);
     //     });
