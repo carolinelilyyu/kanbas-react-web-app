@@ -11,6 +11,7 @@ function CourseNavigation() {
     "Quizzes",
     "People",
     "PanoptoVideos",
+    "Questions",
     "Discussions",
     "Announcements",
     "Pages",
