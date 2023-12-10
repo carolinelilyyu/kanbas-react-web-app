@@ -6,6 +6,7 @@ import { FaEllipsisVertical } from "react-icons/fa6";
 import { useDispatch, useSelector } from 'react-redux';
 import { addQuiz, deleteQuiz, updateQuiz, selectQuiz, setQuizzes, togglePublishStatus } from "./quizzesReducer";
 import * as client from "./client";
+import axios from "axios";
 
 function Quizzes() {
   const { courseId } = useParams();
@@ -63,6 +64,32 @@ function Quizzes() {
     return date.toLocaleDateString('en-US', options);
   };
 
+  const [newQuiz, setNewQuiz] = useState({
+    title: "New Quiz",
+    course: courseId,
+    duedate: "2023-12-15", 
+    questions: [],
+  });
+  
+  const U =  `http://localhost:4000/api/Courses/${courseId}/Quizzes`;
+  const handleNewQuizChange = (event) => {
+    setNewQuiz({ ...newQuiz, [event.target.name]: event.target.value });
+  };
+  const addNewQuiz = async () => {
+    console.log("adding new quiz");
+    const response = await axios.post(U, newQuiz);
+    dispatch(addQuiz(response.data));
+    setNewQuiz({
+      title: "New Quiz",
+      course: courseId,
+      duedate: "2023-12-15",
+      questions: [
+        {points:2,}
+      ],
+    });
+  };
+    
+
   return (
     <div>
       <div className="list-group mx-3">
@@ -76,9 +103,19 @@ function Quizzes() {
               value={searchTerm}
               onChange={handleSearchChange}
             />
+                 <input
+    type="text"
+    name="title"
+    placeholder="Enter Quiz Title"
+    className="form-control w-25"
+    value={newQuiz.title}
+    onChange={handleNewQuizChange}
+  />
             <div className="d-flex">
-              <button type="button" className="btn btn-light">
+       
+              <button type="button" className="btn btn-light" onClick={addNewQuiz}>
                 + Quiz
+
               </button>
               <button type="button" className="btn btn-light">
                 <FaEllipsisVertical />
@@ -119,7 +156,6 @@ function Quizzes() {
                       ) : (
                         <b>{quiz.status}</b>
                       )}
-                      &nbsp;&nbsp; |&nbsp;&nbsp;
                       <b>Due</b> {quiz.dueDate === 'Multiple Dates' ? (
                         <>
                           <span className="red">Multiple Dates</span>
@@ -129,7 +165,7 @@ function Quizzes() {
                       )}
                       &nbsp;&nbsp; |&nbsp;&nbsp;
                       {quiz.points} pts &nbsp;&nbsp;|&nbsp;&nbsp;
-                      {quiz.questions} Questions
+                      {quiz.questions.length} Questions
                     </small>
                   </a>
                 </Link>

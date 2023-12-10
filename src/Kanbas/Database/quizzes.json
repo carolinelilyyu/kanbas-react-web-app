@@ -24,7 +24,7 @@
           "options": [
             "Cascasing Markup Language",
             "Cascading Style Sheets",
-            "Lala land"
+            "Commuting Styling Sheets"
           ],
           "correctOption": 1
         }
@@ -53,12 +53,13 @@
       },
       {
           "questionId": "Q101_2",
-          "text": "What does CSS stand for?",
-         "points":2,
+            "text": "Consider the following code snippet ___1___ ___2___=value ___3___ Fill in the blanks to create an input field who's who's default value is November 22, 2011.",
+        
+         "points":4,
           "options": [
-            "Cascasing Markup Language",
-            "Cascading Style Sheets",
-            "Lala land"
+            "type, date, 2011-11-22",
+            "input , date, 22-11-2022",
+            "type, datetime, 22-11-22"
           ],
           "correctOption": 1
         }
@@ -96,35 +97,16 @@
         },
         {
           "questionId": "Q101_2",
-          "text": "What does CSS stand for?",
+            "text": "Consider the following code snippet ___1___ ___2___=value ___3___ Fill in the blanks to create an input field who's who's default value is November 22, 2011.",
+        
+         "points":4,
           "options": [
-            "Cascasing Markup Language",
-            "Cascading Style Sheets",
-            "Lala land"
-          ],
-          "correctOption": 1
-        },
-        {
-          "questionId": "Q101_2",
-          "text": "What does CSS stand for?",
-          "options": [
-            "Cascasing Markup Language",
-            "Cascading Style Sheets",
-            "Lala land"
-          ],
-          "correctOption": 1
-        },
-        {
-          "questionId": "Q101_2",
-          "text": "What does CSS stand for?",
-          "options": [
-            "Cascasing Markup Language",
-            "Cascading Style Sheets",
-            "Lala land"
+            "type, date, 2011-11-22",
+            "input , date, 22-11-2022",
+            "type, datetime, 22-11-22"
           ],
           "correctOption": 1
         }
-
     ]    
   }
 ]

@@ -39,7 +39,7 @@ function KanbasNavigation() {
 
   const { pathname } = useLocation();
   return (
-    <div className="list-group wd-kanbas-navigation d-sm-none d-md-none d-lg-block">
+    <div className="list-group wd-kanbas-navigation d-sm-none d-md-none d-lg-block" >
             <img  src="/images/northeastern.png" className="northeasternicon"/> 
                 {links.map((link, index) => (
                     <Link
