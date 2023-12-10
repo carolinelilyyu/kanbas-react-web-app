@@ -9,7 +9,7 @@ import {
     setQuestionList,
     setQuestion,
  } from './questionsReducer';
- 
+import "./index.css";
 function QuestionsList({ quizId }) {
     const dispatch = useDispatch();
 
@@ -50,14 +50,14 @@ function QuestionsList({ quizId }) {
 
   return (
     <div>
-      <h1>Questions for Quiz {quizId}</h1>
+      <h5><b>Questions for Quiz</b></h5>
         <button type="button" class="btn btn-light" 
             onClick={handleAddQuestion}>
             + New Question
         </button>
       <ul>
         {questions.map(question => (
-          <li key={question._id}>
+          <li class="no-bullet" key={question._id}>
              <li class="list-group-item d-flex justify-content-between align-items-center">
              <Link to={`/Kanbas/Courses/${courseId}/Questions/${question._id}/Edit`}>
               {question.title}
@@ -69,11 +69,12 @@ function QuestionsList({ quizId }) {
                 Delete
             </button>
             </div>
-        </li>
+          </li>
             
           </li>
         ))}
       </ul>
+      
     </div>
   );
 };

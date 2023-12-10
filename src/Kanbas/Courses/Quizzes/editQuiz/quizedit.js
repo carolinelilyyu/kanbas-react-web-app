@@ -352,10 +352,48 @@ function QuizEdit() {
           )}
 
           {activeTab === "Questions" && (
-            <Questions quizId={quizId} />
-          )}
+            <div>
+              <Questions quizId={quizId} />
+              <div className="col-lg-9 d-flex align-items-center">
 
-        </div>
+              <input className="form-check" type="checkbox" />
+              <label className="ms-2">Notify Users this quiz has changed</label>
+              <hr className="my-2 mx-3" />
+              <Link
+                key={quiz._id}
+                to={`/Kanbas/Courses/${courseId}/Quizzes/${quiz._id}`}
+                className="btn btn-danger ms-auto m-1 p-1"
+                onClick={handleSave}>
+                Save
+              </Link>
+              <Link
+                key={quiz._id}
+                to={`/Kanbas/Courses/${courseId}/Quizzes/`}
+                className="btn btn-outline-secondary m-1 p-1"
+                onClick={() => {
+                  handleInputChange("published", true);
+                  handleSavePublish();
+                }}
+              >
+                Save & Publish
+              </Link>
+
+
+
+              <Link
+                key={quiz._id}
+                to={`/Kanbas/Courses/${courseId}/Quizzes/${quiz._id}`}
+                className="btn btn-outline-secondary m-1 p-1">
+                Cancel
+              </Link>
+            </div>
+
+            </div>
+              
+            )}
+            
+
+          </div>
       )}
     </>
   );
