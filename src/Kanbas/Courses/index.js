@@ -67,6 +67,10 @@ function Courses({ courses }) {
                 element={<QuizDisplay />}
                 />
                 <Route
+                path="Quizzes/:quizId/preview"
+                element={<QuizPreview />}
+                />
+                 <Route
                 path="Quizzes/:quizId/edit"
                 element={<QuizEdit />}
                 />

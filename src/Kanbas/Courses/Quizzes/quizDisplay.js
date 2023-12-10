@@ -170,7 +170,7 @@ function QuizDisplay() {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Link
-            to={`/Kanbas/Courses/${courseId}/Quizzes`}
+            to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/preview`}
             className="btn btn-red"
             style={{
               color: 'white',
