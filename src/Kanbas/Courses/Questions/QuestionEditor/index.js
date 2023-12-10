@@ -63,7 +63,7 @@ function QuestionEditor() {
         const status = await client.updateQuestion(updatedQuestion);
         console.log(status);
         dispatch(updateQuestion(updatedQuestion));
-        navigate(`/Kanbas/Courses/${courseId}/Quizzes/${quizId}`);
+        navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
     };
     
 useEffect(() => {
@@ -289,7 +289,7 @@ useEffect(() => {
                     )}
 
                     <div>
-                        <Link to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}`}
+                        <Link to={`/Kanbas/Courses/${courseId}/Quizzes`}
                             className="btn btn-light">
                             Cancel
                         </Link>
