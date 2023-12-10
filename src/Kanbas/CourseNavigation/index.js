@@ -8,6 +8,7 @@ function CourseNavigation() {
     "Modules", 
     "Assignments", 
     "Grades",
+    "Quizzes",
     "People",
     "PanoptoVideos",
     "Questions",

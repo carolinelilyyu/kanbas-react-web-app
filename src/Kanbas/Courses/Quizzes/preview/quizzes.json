@@ -1,0 +1,131 @@
+[
+    {
+      "_id": "Q101",
+      "title": "Q1- HTML",
+      "course": "RS101",
+      "duedate": "September 18, 2023",
+      "questions": [
+        {
+          "questionId": "Q101_1",
+          "text": "What does HTML stand for?",
+          "points":1,
+          "options": [
+            "Hypertext Markup Language",
+            "High-Level Textual Markup Language",
+            "Hyperlink and Text Markup Language"
+          ],
+          "correctOption": 0
+        },
+        {
+            "questionId": "Q101_2",
+            "text": "What does CSS stand for?",
+            "points":7,
+
+            "options": [
+              "Cascasing Markup Language",
+              "Cascading Style Sheets",
+              "Lala land"
+            ],
+            "correctOption": 1
+          }
+
+      ]
+      
+    },
+
+
+    {
+      "_id": "A201",
+      "title": "Quiz 2",
+      "course": "RS102",
+      "duedate": "Dec 28, 2023",
+      "questions": [
+        {
+          "questionId": "Q101_1",
+          "text": "An HTML label element can be associated with an HTML input element by setting their id attributes to the same value.The resulting effect is that when you click on the label text, the input element receives focus as if you had click on the input element itself",
+          "points":1,
+
+          "options": [
+            "The statement is correct",
+            "The statement is partially correct"
+          ],
+          "correctOption": 0
+        },
+        {
+            "questionId": "Q101_2",
+            "text": "What does CSS stand for?",
+           "points":2,
+            "options": [
+              "Cascasing Markup Language",
+              "Cascading Style Sheets",
+              "Lala land"
+            ],
+            "correctOption": 1
+          }
+
+      ]    
+    },
+
+
+
+    {
+      "_id": "A202",
+      "title": "Quiz 3",
+      "course": "RS103",
+      "duedate": "September 29, 2023",
+      "questions": [
+        {
+          "questionId": "Q101_1",
+          "text": "What does HTML stand for?",
+          "options": [
+            "Hypertext Markup Language",
+            "High-Level Textual Markup Language",
+            "Hyperlink and Text Markup Language"
+          ],
+          "correctOption": 0
+        },
+        {
+            "questionId": "Q101_2",
+            "text": "What does CSS stand for?",
+            "options": [
+              "Cascasing Markup Language",
+              "Cascading Style Sheets",
+              "Lala land"
+            ],
+            "correctOption": 1
+          },
+          {
+            "questionId": "Q101_2",
+            "text": "What does CSS stand for?",
+            "options": [
+              "Cascasing Markup Language",
+              "Cascading Style Sheets",
+              "Lala land"
+            ],
+            "correctOption": 1
+          },
+          {
+            "questionId": "Q101_2",
+            "text": "What does CSS stand for?",
+            "options": [
+              "Cascasing Markup Language",
+              "Cascading Style Sheets",
+              "Lala land"
+            ],
+            "correctOption": 1
+          },
+          {
+            "questionId": "Q101_2",
+            "text": "What does CSS stand for?",
+            "options": [
+              "Cascasing Markup Language",
+              "Cascading Style Sheets",
+              "Lala land"
+            ],
+            "correctOption": 1
+          }
+
+      ]    
+    }
+  ]
+  
