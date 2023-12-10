@@ -5,11 +5,12 @@ import "./quizedit.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuiz } from "../quizzesReducer";
 import * as client from '../client';
-
+import Questions from "../../Questions"
 function QuizEdit() {
 
   const { courseId, quizId } = useParams();
   const [updatedQuiz, setUpdatedQuiz] = useState({});
+  const [activeTab, setActiveTab] = useState("Details");
 
   const quiz = useSelector((state) => state.quizzesReducer.selectedQuiz);
 
@@ -24,6 +25,11 @@ function QuizEdit() {
   }, [quizId]);
 
   console.log(quiz)
+
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
 
   const handleInputChange = (field, value) => {
     setUpdatedQuiz((prev) => ({ ...prev, [field]: value }));
@@ -65,27 +71,36 @@ function QuizEdit() {
 
   return (
     <>
+      
       {quiz && (
         <div className="container-fluid" style={{ "width": "80%" }}>
-
-
           <h2>Quizzes for course {courseId}</h2>
 
           <div className="py-4">
             <ul className="nav nav-tabs">
               <li className="nav-item">
-                <a className="nav-link active"
-                  href="#">Details</a>
+                <a
+                  className={`nav-link ${activeTab === "Details" ? "active" : ""}`}
+                  onClick={() => handleTabClick("Details")}
+                >
+                  Details
+                </a>
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href="#">Questions</a>
+                <a
+                  className={`nav-link ${activeTab === "Questions" ? "active" : ""}`}
+                  onClick={() => handleTabClick("Questions")}
+                >
+                  Questions
+                </a>
               </li>
             </ul>
-
-
           </div>
 
+          {activeTab === "Details" && (
+            <div className="list-group">
+              
           <div className="list-group">
             <div className="wd-flex-grow-1">
               <div className="d-flex justify-content-between">
@@ -332,6 +347,13 @@ function QuizEdit() {
               Cancel
             </Link>
           </div>
+
+            </div>
+          )}
+
+          {activeTab === "Questions" && (
+            <Questions />
+          )}
 
         </div>
       )}
