@@ -1,0 +1,18 @@
+.custom-button {
+    color: darkred;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none; /* Remove the default focus outline */
+  }
+
+.custom-button:hover {
+    color: red;
+}
+
+  
+  .custom-button:active {
+    /* Styles for when the button is clicked */
+    transform: translateY(1px); /* Add a small downward shift */
+  }
+  

@@ -4,8 +4,10 @@ import * as client from "../client";
 import { useSelector, useDispatch } from "react-redux";
 import { updateQuestion, setQuestion } from "../questionsReducer";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // Import the styles
 import { Dropdown } from 'react-bootstrap';
+import "./index.css";
 
 function QuestionEditor() {
     const formatOptions = ["Multiple Choice", "Fill In The Blank", "True/False"];
@@ -158,83 +160,127 @@ useEffect(() => {
                         </div>
                     </div>
                     <hr></hr>
-                    <h3>Enter your question, then multiple answers, then select the correct answer.</h3>
-                    <h1>Question: </h1>
+                    <small className="text-muted">Enter your question, then multiple answers, then select the correct answer.</small>
 
                     {selectedQuestion && currFormat === 'Multiple Choice' ? (
                         <div>
-                            <textarea
-                                rows={4}
-                                cols={50}
-                                value={currInnerQuestion}
-                                onChange={(e) => (setInnerQuestion(e.target.value))} />
-
+                            <label htmlFor="questionText" className="form-label"><b>Question:</b></label>
+                                <ReactQuill
+                                    rows={4}
+                                    id="questionText"
+                                    value={currInnerQuestion}
+                                    onChange={(value) => setInnerQuestion(value)}
+                                />
                             <div>
-                                <h2>Answers</h2>
+                                <br></br>
+                                
+                                <h6><b>Answer:</b></h6>
+                                <small className="text-muted">Select the possible option(s) that would be correct.</small>
+
                                 {currOptions.map((answer, index) => (
-                                    <div key={index}>
-                                        <label>{`Option`}</label>
+                                    <div key={index} className="row align-items-center">
+                                    <div className="col-sm-4">
+                                        <label>{`Possible answer:`}</label>
+                                    </div>
+                                    <div className="col-sm-4">
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={answer}
                                             onChange={(e) => handleOptionsChange(index, e.target.value)}
                                         />
+                                    </div>
+                                    <div className="col-sm-2">
                                         <input
                                             type="checkbox"
                                             checked={currCorrectOptions[index] || false}
                                             onChange={() => handleCorrectOptionChange(index)}
                                         />
-                                        <button onClick={() => handleDeleteOption(index)}>Delete</button>
                                     </div>
+                                    <div className="col-sm-2">
+                                        <button className="btn btn-danger" onClick={() => handleDeleteOption(index)}>Delete</button>
+                                    </div>
+                                </div>
+                                
                                 ))}
-                                <button onClick={handleAddOption}>+ Add Option</button>
+                                <br></br>
+                                <button className="custom-button" onClick={handleAddOption}>+ Add Option</button>
+                                
                             </div>
                         </div>
                     ) : selectedQuestion && currFormat === 'True/False' ? (
                         <div>
-                            <textarea
-                                rows={4}
-                                cols={50}
-                                value={currInnerQuestion}
-                                onChange={(e) => (setInnerQuestion(e.target.value))} />
-
-                            <div>
-                                <label>True</label>
-                                <input
-                                    type="radio"
-                                    value="true"
-                                    checked={currCorrectOptions === 'true'}
-                                    onChange={() => setCurrCorrectOptions('true')}
-                                />
-                                <label>False</label>
-                                <input
-                                    type="radio"
-                                    value="false"
-                                    checked={currCorrectOptions === 'false'}
-                                    onChange={() => setCurrCorrectOptions('false')}
-                                />
+                            <label htmlFor="questionText" className="form-label"><b>Question:</b></label>
+                                    <ReactQuill
+                                        rows={4}
+                                        id="questionText"
+                                        value={currInnerQuestion}
+                                        onChange={(value) => setInnerQuestion(value)}
+                                    />
+                                <div>
+                                <br></br>
+                                
+                                <h6><b>Answer:</b></h6>
+                                <div>
+                                <div className="form-check form-check-inline">
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        id="trueRadio"
+                                        value="true"
+                                        checked={currCorrectOptions === 'true'}
+                                        onChange={() => setCurrCorrectOptions('true')}
+                                    />
+                                    <label className="form-check-label" htmlFor="trueRadio">True</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        id="falseRadio"
+                                        value="false"
+                                        checked={currCorrectOptions === 'false'}
+                                        onChange={() => setCurrCorrectOptions('false')}
+                                    />
+                                    <label className="form-check-label" htmlFor="falseRadio">False</label>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     ) : selectedQuestion && currFormat === 'Fill In The Blank' ? (
                         <div>
-                            <textarea
-                                rows={4}
-                                cols={50}
-                                value={currInnerQuestion}
-                                onChange={(e) => setInnerQuestion(e.target.value)}
-                            />
+                            <label htmlFor="questionText" className="form-label"><b>Question:</b></label>
+                                    <ReactQuill
+                                        rows={4}
+                                        id="questionText"
+                                        value={currInnerQuestion}
+                                        onChange={(value) => setInnerQuestion(value)}
+                                    />
+                                <br></br>
+                                
+                                <h6><b>Answer:</b></h6>
                             {currOptions.map((answer, index) => (
-                                    <div key={index}>
-                                        <label>{`Possible answer:`}</label>
-                                        <input
-                                            type="text"
-                                            value={answer}
-                                            onChange={(e) => handleOptionsChange(index, e.target.value)}
-                                        />
-                                        <button onClick={() => handleDeleteOption(index)}>Delete</button>
+                                        <div key={index} className="row align-items-center">
+                                        <div className="col-sm-4">
+                                            <label>{`Possible answer:`}</label>
+                                        </div>
+                                        <div className="col-sm-4">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={answer}
+                                                onChange={(e) => handleOptionsChange(index, e.target.value)}
+                                            />
+                                        </div>
+                                        
+                                        <div className="col-sm-2">
+                                            <button className="btn btn-danger" onClick={() => handleDeleteOption(index)}>Delete</button>
+                                        </div>
                                     </div>
+                                    
                                 ))}
-                                <button onClick={handleAddOption}>+ Add Option</button>
+                                <br></br>
+                                <button className="custom-button" onClick={handleAddOption}>+ Add Option</button>
                         </div>
                     ):(
                         <div>
