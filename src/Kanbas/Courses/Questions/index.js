@@ -10,11 +10,11 @@ import {
     setQuestion,
  } from './questionsReducer';
  
-function QuestionsList() {
+function QuestionsList({ quizId }) {
     const dispatch = useDispatch();
 
   const { courseId } = useParams();
-  const quizId = "75510e70870c092d5441bc94";
+  // const quizId = "75510e70870c092d5441bc94";
   const [questions, setQuestions] = useState([]);
 
   const handleAddQuestion = async () => {

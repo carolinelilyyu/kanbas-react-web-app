@@ -352,7 +352,7 @@ function QuizEdit() {
           )}
 
           {activeTab === "Questions" && (
-            <Questions />
+            <Questions quizId={quizId} />
           )}
 
         </div>
