@@ -17,36 +17,34 @@ function QuestionsList() {
   const quizId = "75510e70870c092d5441bc94";
   const [questions, setQuestions] = useState([]);
 
-
-const handleAddQuestion = () => {
-  const newQuestion = {
-    title: 'New Question',
-    format: 'Multiple Choice',
-    possibleAnswers: [],
-  };
-
-  client.addQuestion(quizId, newQuestion).then((newQuestion) => {
-    dispatch(addQuestion(newQuestion));
-    setQuestions([...questions, newQuestion]); // Prepend the new question to the list
-  });
-  };
-
-  const handleDeleteQuestion = (questionId) => {
-      client.deleteQuestion(questionId).then((status) => {
-        dispatch(deleteQuestion(questionId));
-        setQuestions(questions.filter(question => question._id !== questionId));
-      });
+  const handleAddQuestion = async () => {
+    const newQuestion = {
+      title: 'New Question',
+      format: 'Multiple Choice',
+      options: [],
     };
-
-
+  
+    const status = await client.addQuestion(quizId, newQuestion).then((newQuestion) => {
+      dispatch(addQuestion(newQuestion));
+      setQuestions(prevQuestions => [...prevQuestions, newQuestion]); // Use functional form of setQuestions
+    });
+  };
+  
+  const handleDeleteQuestion = async (questionId) => {
+    const status = await  client.deleteQuestion(questionId).then((status) => {
+      dispatch(deleteQuestion(questionId));
+      setQuestions(prevQuestions => prevQuestions.filter(question => question._id !== questionId)); // Use functional form of setQuestions
+    });
+  };
+  
   useEffect(() => {
     client.findQuestionsForQuiz(quizId)
       .then((questions) => {
         dispatch(setQuestionList(questions));
-            setQuestions(questions);
-        });
-       
+        setQuestions(questions);
+      });
   }, [quizId, dispatch]);
+  
 
   return (
     <div>
