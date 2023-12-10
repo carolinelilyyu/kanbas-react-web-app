@@ -27,6 +27,10 @@ function Quizzes() {
     setSearchTerm(event.target.value);
   };
 
+  const filteredQuizzes = quizzes.filter((quiz) =>
+    quiz.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const handleQuizMenuClick = (quizId) => {
     setQuizMenuOpen(prevState => ({ ...prevState, [quizId]: !prevState[quizId] }));
     setMenuQuizId(quizId);
@@ -59,19 +63,23 @@ function Quizzes() {
       return "Multiple Dates";
     }
     const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'short',
-     day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+    const options = {
+      year: 'numeric', month: 'short',
+      day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
+    };
     return date.toLocaleDateString('en-US', options);
   };
 
   const [newQuiz, setNewQuiz] = useState({
     title: "New Quiz",
     course: courseId,
-    duedate: "2023-12-15", 
+    dueDate: "1999-01-01T00:00:00",
+    until: "1999-01-01T00:00:00",
+    availableDate: "1999-01-01T00:00:00",
     questions: [],
   });
-  
-  const U =  `http://localhost:4000/api/Courses/${courseId}/Quizzes`;
+
+  const U = `http://localhost:4000/api/Courses/${courseId}/Quizzes`;
   const handleNewQuizChange = (event) => {
     setNewQuiz({ ...newQuiz, [event.target.name]: event.target.value });
   };
@@ -84,11 +92,11 @@ function Quizzes() {
       course: courseId,
       duedate: "2023-12-15",
       questions: [
-        {points:2,}
+        { points: 2, }
       ],
     });
   };
-    
+
 
   return (
     <div>
@@ -101,18 +109,18 @@ function Quizzes() {
               placeholder="Search for Quizzes"
               className="form-control w-25"
               value={searchTerm}
-              onChange={handleSearchChange}
+          onChange={handleSearchChange}
             />
-                 <input
-    type="text"
-    name="title"
-    placeholder="Enter Quiz Title"
-    className="form-control w-25"
-    value={newQuiz.title}
-    onChange={handleNewQuizChange}
-  />
+            {/* <input
+              type="text"
+              name="title"
+              placeholder="Enter Quiz Title"
+              className="form-control w-25"
+              value={newQuiz.title}
+              onChange={handleNewQuizChange}
+            /> */}
             <div className="d-flex">
-       
+
               <button type="button" className="btn btn-light" onClick={addNewQuiz}>
                 + Quiz
 
@@ -129,7 +137,7 @@ function Quizzes() {
               Assignment Quizzes
             </li>
           </ul>
-          {quizzes.map((quiz) => (
+          {filteredQuizzes.map((quiz) => (
             <div key={quiz._id} className="row my-3 border p-3 rounded">
               <div className="col-1 green">
                 <BiSolidPlaneAlt />
