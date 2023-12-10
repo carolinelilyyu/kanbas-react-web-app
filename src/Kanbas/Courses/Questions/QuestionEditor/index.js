@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
     updateQuestion,
     setQuestion,
-  } from "../questionsReducer";
+} from "../questionsReducer";
 
 function QuestionEditor() {
     const formatOptions = ["Multiple Choice", "Fill In The Blank", "True/False"];
@@ -19,29 +19,36 @@ function QuestionEditor() {
     const [currPoints, setCurrPoints] = useState(0);
     const [currFormat, setCurrFormat] = useState('');
     const [currCorrectAnswer, setCurrCorrectAnswer] = useState('');
-    const [currPossibleAnswers, setCurrPossibleAnswers] = useState([]);
-    const [currOptionalText, setCurrOptionalText] = useState();
+    const [currOptions, setCurrOptions] = useState([]);
+    const [correctOptions, setCorrectOptions] = useState([]);
 
-    const handlePossibleAnswersChange = (index, value) => {
-        const newPossibleAnswers = [...currPossibleAnswers];
-        newPossibleAnswers[index] = value;
-        setCurrPossibleAnswers(newPossibleAnswers);
+    const handleOptionsChange = (index, value) => {
+        const newOptions = [...currOptions];
+        newOptions[index] = value;
+        setCurrOptions(newOptions);
     };
 
-    const handleCorrectAnswerChange = (value) => {
-        setCurrCorrectAnswer(value);
+    const handleCorrectOptionChange = (index) => {
+        const newCorrectOptions = [...correctOptions];
+        newCorrectOptions[index] = !newCorrectOptions[index];
+        setCorrectOptions(newCorrectOptions);
     };
 
-    const handleAddPossibleAnswer = () => {
-        setCurrPossibleAnswers([...currPossibleAnswers, '']);
+    const handleAddOption = () => {
+        setCurrOptions([...currOptions, '']);
+        setCorrectOptions([...correctOptions, false]);
     };
 
-    const handleDeletePossibleAnswer = (index) => {
-        const newAnswers = [...currPossibleAnswers];
-        newAnswers.splice(index, 1);
-        setCurrPossibleAnswers(newAnswers);
-      };
-        
+    const handleDeleteOption = (index) => {
+        const newOptions = [...currOptions];
+        newOptions.splice(index, 1);
+        setCurrOptions(newOptions);
+
+        const newCorrectOptions = [...correctOptions];
+        newCorrectOptions.splice(index, 1);
+        setCorrectOptions(newCorrectOptions);
+    };
+
     const handleUpdateQuestion = async () => {
         const updatedQuestion = {
             _id: questionId,
@@ -50,9 +57,10 @@ function QuestionEditor() {
             points: currPoints,
             format: currFormat,
             correctAnswer: currCorrectAnswer,
-            optionalText: currOptionalText,
-            possibleAnswers: currPossibleAnswers,
-          };
+            options: currOptions,
+            correctOptions: correctOptions,
+        };
+
         const status = await client.updateQuestion(updatedQuestion);
         console.log(status);
         dispatch(updateQuestion(updatedQuestion));
@@ -61,109 +69,97 @@ function QuestionEditor() {
 
     useEffect(() => {
         if (questionId) {
-
-            console.log(questionId);
             client.getQuestion(questionId)
-            .then((q) => {
-                dispatch(setQuestion(q));
-                setCurrPoints(q.points);
-                setCurrTitle(q.title);
-                setInnerQuestion(q.question);
-                setCurrFormat(q.format);
-                setCurrCorrectAnswer(q.correctAnswer);
-                setCurrPossibleAnswers(q.possibleAnswers);
-                setCurrOptionalText(q.optionalText);
-                }
-            );
-        }   else {
+                .then((q) => {
+                    dispatch(setQuestion(q));
+                    setCurrPoints(q.points);
+                    setCurrTitle(q.title);
+                    setInnerQuestion(q.question);
+                    setCurrFormat(q.format);
+                    setCurrCorrectAnswer(q.correctAnswer);
+                    setCurrOptions(q.options);
+                    // Assuming correctOptions is stored in the database response
+                    setCorrectOptions(q.correctOptions || []);
+                });
+        } else {
             // Set default values for a new question
             setCurrPoints(0);
             setCurrTitle('');
             setInnerQuestion('');
             setCurrFormat('');
             setCurrCorrectAnswer('');
-            setCurrPossibleAnswers([]);
-            setCurrOptionalText('');
+            setCurrOptions([]);
+            setCorrectOptions([]);
         }
-        
+
     }, [questionId]);
 
-
-return (<div>
-    {selectedQuestion && (
+    return (
         <div>
-        
-            <div>
-                <label>Points:</label>
-                <input type="number" value={currPoints} onChange={(e) => setCurrPoints(e.target.value)} />
-            </div>
+            {selectedQuestion && (
+                <div>
+                    <div>
+                        <label>Points:</label>
+                        <input type="number" value={currPoints} onChange={(e) => setCurrPoints(e.target.value)} />
+                    </div>
 
-            <input type="text" value={currTitle} onChange={(e) => setCurrTitle(e.target.value)} />
-            
-            <div>
-                <label>Format:</label>
-                <select value={currFormat} onChange={(e) => setCurrFormat(e.target.value)}>
-                    {formatOptions.map((format, index) => (
-                        <option key={index} value={format}>
-                        {format}
-                        </option>
-                    ))}
-                </select>
-            </div> 
-            <hr></hr>
-            <h3>Enter your question, then multiple answers, then select the correct answer.</h3>
-            <h1>Question: </h1>
+                    <input type="text" value={currTitle} onChange={(e) => setCurrTitle(e.target.value)} />
 
-            <input type="text" value={currOptionalText} onChange={(e) => setCurrOptionalText(e.target.value)} />
+                    <div>
+                        <label>Format:</label>
+                        <select value={currFormat} onChange={(e) => setCurrFormat(e.target.value)}>
+                            {formatOptions.map((format, index) => (
+                                <option key={index} value={format}>
+                                    {format}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <hr></hr>
+                    <h3>Enter your question, then multiple answers, then select the correct answer.</h3>
+                    <h1>Question: </h1>
 
-            <div>
-                <textarea
-                    rows={4}
-                    cols={50}
-                    value={currInnerQuestion} 
-                    onChange={(e) => (setInnerQuestion(e.target.value))} />
-            </div>
+                    <div>
+                        <textarea
+                            rows={4}
+                            cols={50}
+                            value={currInnerQuestion}
+                            onChange={(e) => (setInnerQuestion(e.target.value))} />
+                    </div>
 
+                    <div>
+                        <h2>Answers</h2>
+                        {currOptions.map((answer, index) => (
+                            <div key={index}>
+                                <label>{`Option`}</label>
+                                <input
+                                    type="text"
+                                    value={answer}
+                                    onChange={(e) => handleOptionsChange(index, e.target.value)}
+                                />
+                                <input
+                                    type="checkbox"
+                                    checked={correctOptions[index] || false}
+                                    onChange={() => handleCorrectOptionChange(index)}
+                                />
+                                <button onClick={() => handleDeleteOption(index)}>Delete</button>
+                            </div>
+                        ))}
+                        <button onClick={handleAddOption}>+ Add Option</button>
+                    </div>
 
+                    <div>
+                        <Link to={`/Kanbas/Courses/${courseId}/Assignments`}
+                            className="btn btn-light">
+                            Cancel
+                        </Link>
+                        <button className="btn btn-danger" onClick={handleUpdateQuestion}>Update Question</button>
+                    </div>
 
-
-            <div>
-                <h2>Answers</h2>
-                <label>{`Correct answer`}</label>
-                    <input
-                        type="text"
-                        value={currCorrectAnswer}
-                        onChange={(e) => handleCorrectAnswerChange(e.target.value)}
-                    />
-                {currPossibleAnswers.map((answer, index) => (
-                <div key={index}>
-                    <label>{`Possible answer`}</label>
-                    <input
-                        type="text"
-                        value={answer}
-                        onChange={(e) => handlePossibleAnswersChange(index, e.target.value)}
-                    />
-                    <button onClick={() => handleDeletePossibleAnswer(index)}>Delete</button>
                 </div>
-                ))}
-                <button onClick={handleAddPossibleAnswer}>+ Add Answer</button>
-            </div> 
-
-            <div>
-                <Link to={`/Kanbas/Courses/${courseId}/Assignments`}
-                    className="btn btn-light">
-                    Cancel
-                </Link>
-                <button className="btn btn-danger" onClick={handleUpdateQuestion}>Update Question</button>
-            </div>
-
+            )}
         </div>
-            
-)}
-</div>
-
-
-);
+    );
 };
 
 export default QuestionEditor;
