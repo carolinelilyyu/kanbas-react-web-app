@@ -68,9 +68,15 @@ function QuizPreview() {
 
 
         <br />
-        <button className="btn btn-primary" style={{ backgroundColor: "green" }}>
+        <Link to={`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/edit`}
+                            className="btn btn-primary"
+                            style={{ backgroundColor: "green" }}
+                            >
+                            Submit Quiz
+                        </Link>
+        {/* <button className="btn btn-primary" >
           Submit Quiz
-        </button>
+        </button> */}
       </div>)}</>
   );
 }
